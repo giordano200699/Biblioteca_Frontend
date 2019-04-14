@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "biblioteca-fronted": {
+    "fisilib": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/biblioteca-fronted",
+            "outputPath": "dist/fisilib",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "biblioteca-fronted:build"
+            "browserTarget": "fisilib:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "biblioteca-fronted:build:production"
+              "browserTarget": "fisilib:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "biblioteca-fronted:build"
+            "browserTarget": "fisilib:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
         }
       }
     },
-    "biblioteca-fronted-e2e": {
+    "fisilib-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "biblioteca-fronted:serve"
+            "devServerTarget": "fisilib:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "biblioteca-fronted:serve:production"
+              "devServerTarget": "fisilib:serve:production"
             }
           }
         },
@@ -132,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "biblioteca-fronted"
+  "defaultProject": "fisilib"
 }
