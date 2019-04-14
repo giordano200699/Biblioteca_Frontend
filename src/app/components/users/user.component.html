@@ -14,7 +14,7 @@
               <p>Llenar el siguiente formulario:</p>
           </div>
             <div class="container">
-              <form class="form-horizontal">
+              <form (ngSubmit)="guardar()" class="form-horizontal">
                 <div class="form-row">
                     <div class=" form-group col-md-6">
                       <label for="name"><b>Nombres</b></label>
