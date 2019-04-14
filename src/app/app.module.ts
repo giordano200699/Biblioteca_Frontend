@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule }    from '@angular/common/http';
 //Routes
 import { APP_ROUTING } from './app.routes';
 //Services
@@ -13,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/users/user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     HomeComponent,
     FooterComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

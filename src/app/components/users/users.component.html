@@ -5,7 +5,7 @@
   <div class="main main-raised">
     <div class="profile-content">
       <div class="container">
-        <nav class="navbar navbar-expand-lg bg-primary">
+        <nav class="navbar navbar-expand-lg bg-dark">
           <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -18,7 +18,7 @@
                   <a class="nav-link" href="#">Alumnos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#}}">Libros</a>
+                  <a class="nav-link" href="#">Libros</a>
                 </li>
              </ul>
            </div>
@@ -33,6 +33,14 @@
                 <div class="panel-body">
                     <p>Solo usted como administrador tiene acceso a esta sección.</p>
                     <p>Desde aquí es posible gestionar la información de los alumnos.</p>
+                    <div class="row">
+                      <div class="col-md-10 text-right">
+                        <button type="button" name="button" [routerLink]="['/user','nuevo']" class="btn btn-success" >
+                          Nuevo Alumno
+                        </button>
+                      </div>
+                    </div>
+                    <br>
                       <table class="table table-bordered table-hover">
                         <thead>
                           <tr class="success">
@@ -43,12 +51,7 @@
                           </tr>
                         </thead>
                       </table>
-                      <p class="text-muted">Si desea puede registrar un nuevo alumno.</p>
-                      <div class="text-center">
-                        <a href="#" class="btn btn-success">
-                          Nuevo Alumno
-                        </a>
-                      </div>
+
                 </div>
             </div>
         </div>
