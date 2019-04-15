@@ -44,14 +44,33 @@
                       <table class="table table-bordered table-hover">
                         <thead>
                           <tr class="success">
-                              <th>Nombre</th>
-                              <th>Fecha de registro</th>
-                              <th>codigo</th>
-                              <th>Opciones</th>
+                              <th>NOMBRE</th>
+                              <th>DNI</th>
+                              <th>CODIGO</th>
+                              <th>CORREO</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users">
+                                <td class="text-center">1</td>
+                                <td>{{user.nombres}}</td>
+                                <td>{{user.dni}}</td>
+                                <td>{{user.codigo}}</td>
+                                <td class="text-right">{{user.correoInstitucional}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip"  [routerLink]="['/profile',user._id]" class="btn btn-info btn-simple btn-xs">
+                                        <i class="fa fa-user"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Editar Perfil" class="btn btn-success btn-simple btn-xs">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
                       </table>
-
                 </div>
             </div>
         </div>

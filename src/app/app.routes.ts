@@ -4,11 +4,13 @@ import {LoginComponent} from './components/login/login.component';
 import {PerfilComponent} from './components/perfil/perfil.component';
 import {UserComponent} from './components/users/user.component';
 import {UsersComponent} from './components/users/users.component';
+import { UserProfileComponent } from './components/users/user-profile/user-profile.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UsersComponent },
   { path: 'user/:id', component: UserComponent },
+  { path: 'profile/:id', component: UserProfileComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
