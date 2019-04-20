@@ -1,18 +1,18 @@
-export interface User{
-  _id?: String,
-  dni: String,
-  nombres: String,
-  apellidos: String,
-  edad: Number,
-  sexo: Boolean,
-  estado: Number,
-  codigo?: String,
-  correoInstitucional :String;
-  correoPersonal ?: String,
-  escuelaId ?: String,
-  telefonoCasa ?: String,
-  telefonoMovil ?: String,
-  direccion ?: String,
-  imagenId?: String,
-  contrasenia: String,
+export interface User {
+  _id?: string;
+  dni: string;
+  nombres: string;
+  apellidos: string;
+  edad: number;
+  sexo: boolean;
+  estado: number;
+  codigo?: string;
+  correoInstitucional: string;
+  correoPersonal ?: string;
+  escuelaId ?: string;
+  telefonoCasa ?: string;
+  telefonoMovil ?: string;
+  direccion ?: string;
+  imagenId?: string;
+  contrasenia: string;
 }

@@ -4,13 +4,29 @@ import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user.interface';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html'
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html'
 })
-export class UserProfileComponent implements OnInit {
+export class UserEditComponent implements OnInit {
 
   user: any[] = [];
-
+  usuario: User = {
+    dni: '',
+    nombres: '',
+    apellidos: '',
+    edad: null,
+    sexo: false,
+    estado: 0,
+    codigo: '',
+    correoInstitucional : '',
+    correoPersonal : '',
+    escuelaId : '',
+    telefonoCasa : '',
+    telefonoMovil : '',
+    direccion : '',
+    imagenId: 'http://i63.tinypic.com/14xfdx4.jpg',
+    contrasenia: ''
+  };
   constructor( private usersService: UsersService,
                private activatedRoute: ActivatedRoute ) {
 
@@ -37,6 +53,14 @@ export class UserProfileComponent implements OnInit {
 
   mostrar() {
    console.log(this.user);
+  }
+
+  guardar() {
+    console.log(this.usuario);
+
+    this.usersService.newUser( this.usuario )
+      .subscribe( data => {
+      });
   }
 
 }

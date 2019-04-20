@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from "../../services/users.service";
+import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -7,23 +8,25 @@ import { UsersService } from "../../services/users.service";
 })
 export class UsersComponent implements OnInit {
 
-  users:any[] = [];
+  users: any[] = [];
 
-  constructor(private _usersService:UsersService) {
+  constructor(private usersService: UsersService,
+              private router: Router) {
 
-    this._usersService.getUsers()
-        .subscribe( data =>{
-
-          // console.log(data);
-          for(let key$ in data ){
-            // console.log( data[key$] );
-            this.users.push( data[key$] );
-          }
-
-        })
+    this.usersService.getUsers()
+        .subscribe( data => {
+          this.users = data;
+        });
   }
 
   ngOnInit() {
+  }
+
+  deleteUser( dni: string ) {
+    this.usersService.borrarUser(dni)
+      .subscribe( respuesta => {
+          console.log(respuesta);
+      });
   }
 
 }
