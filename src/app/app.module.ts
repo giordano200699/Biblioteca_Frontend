@@ -19,6 +19,8 @@ import { UserComponent } from './components/users/user.component';
 import { UserProfileComponent } from './components/users/user-profile/user-profile.component';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+
 @NgModule({
   declarations: [
     AppComponent,

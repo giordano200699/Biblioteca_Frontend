@@ -6,10 +6,11 @@ import {UserComponent} from './components/users/user.component';
 import {UsersComponent} from './components/users/users.component';
 import { UserProfileComponent } from './components/users/user-profile/user-profile.component';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
+import { AuthGuard } from './_guards';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   { path: 'user/:id', component: UserComponent },
   { path: 'profile/:dni', component: UserProfileComponent },
   { path: 'update/:dni', component: UserEditComponent },
