@@ -24,8 +24,8 @@ export class AuthenticationService {
             .pipe(map(cuenta => {
                 // login successful if there's a jwt token in the response
                 if (cuenta && cuenta[0]._id) {
-                    localStorage.setItem('currentCuenta', JSON.stringify(cuenta));
-                    this.currentCuentaSubject.next(cuenta);
+                    localStorage.setItem('currentCuenta', JSON.stringify(cuenta[0]));
+                    this.currentCuentaSubject.next(cuenta[0]);
                 }
                 return cuenta;
             }));
@@ -34,5 +34,9 @@ export class AuthenticationService {
     logout() {
         localStorage.removeItem('currentCuenta');
         this.currentCuentaSubject.next(null);
+    }
+
+    obtenerAutentificado(){
+        return localStorage.getItem('currentCuenta');
     }
 }

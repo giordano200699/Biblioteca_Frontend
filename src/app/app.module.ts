@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilUsuarioComponent } from './components/perfilUsuario/perfilUsuario.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/users/user.component';
 import { UserProfileComponent } from './components/users/user-profile/user-profile.component';
@@ -29,6 +30,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     FooterComponent,
     LoginComponent,
     PerfilComponent,
+    PerfilUsuarioComponent,
     UsersComponent,
     UserComponent,
     UserProfileComponent,
