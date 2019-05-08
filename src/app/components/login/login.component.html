@@ -3,9 +3,10 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 ml-auto mr-auto">
                 <div class="card card-login">
-                    <form class="form" (ngSubmit) = "iniciarSesion()" >
+                    <form #formLogin="ngForm" (ngSubmit)="iniciarSesion()">
                         <div class="card-header card-header-primary text-center">
                             <h4 class="card-title">Login</h4>
+
                             <div class="social-line">
                                 <a href="#pablo" class="btn btn-just-icon btn-link">
                                     <i class="fa fa-facebook-square"></i>
@@ -26,7 +27,7 @@
                                     <i class="material-icons">mail</i>
                                 </span>
                                 </div>
-                                <input  [(ngModel)]="login.nombre" name="nombre" type="email" class="form-control" placeholder="Email...">
+                                <input [(ngModel)]="login.nombre" id="email" name="email" type="email" class="form-control" placeholder="Email..." required>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -34,15 +35,26 @@
                                       <i class="material-icons">lock_outline</i>
                                     </span>
                                 </div>
-                                <input [(ngModel)] = "login.contrasenia" name="contrasenia" type="password" class="form-control" placeholder="Contraseña...">
+                                <input [(ngModel)]="login.contrasenia" id="password" name="password" type="password" class="form-control" placeholder="Contraseña..." required>
                             </div>
                         </div>
                         <br>
                         <br>
                         <div class="footer text-center">
-                            <button  type="submit" class="btn btn-info">INICIAR SESIÓN</button>
+                            <button type="submit" class="btn btn-info">INICIAR SESIÓN</button>
                         </div>
                     </form>
+                </div>
+                <div class="alert alert-danger" *ngIf="isError">
+                    <div class="container-fluid">
+                        <div class="alert-icon">
+                            <i class="material-icons">error_outline</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                        </button>
+                        <b>Error:</b> El usuario y/o la contraseña es incorrecto!!
+                    </div>
                 </div>
             </div>
         </div>

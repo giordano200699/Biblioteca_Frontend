@@ -25,9 +25,8 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 if (cuenta && cuenta[0]._id) {
                     localStorage.setItem('currentCuenta', JSON.stringify(cuenta));
-                    this.currentCuentaSubject.next(cuenta)
+                    this.currentCuentaSubject.next(cuenta);
                 }
-
                 return cuenta;
             }));
     }

@@ -35,8 +35,8 @@
                             <div class="row">
                                 <div class="col-md-10 text-right">
                                     <button type="button" name="button" [routerLink]="['/user','nuevo']" class="btn btn-success">
-                          Nuevo Alumno
-                        </button>
+                                        Nuevo Alumno
+                                    </button>
                                 </div>
                             </div>
                             <br>
@@ -57,15 +57,36 @@
                                         <td class="text-right">{{user.correoInstitucional}}</td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" title="Ver Perfil" [routerLink]="['/profile',user.dni]" class="btn btn-info btn-simple btn-xs">
-                                        <i class="fa fa-user"></i>
-                                    </button>
+                                                <i class="fa fa-user"></i>
+                                            </button>
                                             <button type="button" rel="tooltip" title="Editar Perfil" [routerLink]="['/update',user.dni]" class="btn btn-success btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                            <button (click)="deleteUser(user.dni)" type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
-                                        <i class="fa fa-times"></i>
-                                    </button>
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger btn-simple btn-xs" type="button" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-times"></i>
+                                            </button>
                                         </td>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        <button (click)="deleteUser(user.dni)" type="button" class="btn btn-danger">Eliminar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 </tbody>
                             </table>
@@ -75,5 +96,4 @@
             </div>
         </div>
     </div>
-
 </body>
