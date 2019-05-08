@@ -3,13 +3,14 @@ import {Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user.interface';
 
+
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html'
 })
 export class UserEditComponent implements OnInit {
 
-  user: any[] = [];
+  user = [];
   usuario: User = {
     dni: '',
     nombres: '',
@@ -28,7 +29,7 @@ export class UserEditComponent implements OnInit {
     contrasenia: ''
   };
   constructor( private usersService: UsersService,
-               private activatedRoute: ActivatedRoute ) {
+               private activatedRoute: ActivatedRoute,private router: Router ) {
 
     this.activatedRoute.params.subscribe( params => {
 
@@ -46,21 +47,23 @@ export class UserEditComponent implements OnInit {
     this.usersService.getUser( dni )
     .subscribe( user => {
       console.log(user);
-      this.user = user;
+      this.user = user[0];
     });
 
   }
+  
 
   mostrar() {
    console.log(this.user);
   }
 
   guardar() {
-    console.log(this.usuario);
+    console.log(this.user);
 
-    this.usersService.newUser( this.usuario )
+    this.usersService.updateUser( this.user )
       .subscribe( data => {
       });
+      
   }
 
 }

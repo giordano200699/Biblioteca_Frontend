@@ -15,7 +15,7 @@
                         INTRANET
                     </a>
                 </li>
-                <li class="nav-item dropdown" *ngIf="isLogin()">
+                <!-- <li class="nav-item dropdown" *ngIf="isLogin()">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" [routerLink]="['/users']" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         PERFIL <span class="caret"></span>
                     </a>
@@ -26,6 +26,21 @@
                             </a>
                         </li>
                     </ul>
+                </li> -->
+                <li class="nav-item" *ngIf="isLogin()">
+                    <a class="nav-link" [routerLink]="['/perfil']">
+                        Mi Perfil
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="isLogin()">
+                    <a class="nav-link" [routerLink]="['/users']">
+                        Usuarios
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="isLogin()">
+                        <a class="btn btn-link" (click)="cerrarSesion()">
+                            <i class="material-icons">exit_to_app</i> Cerrar Sesión
+                        </a>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
                     <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/UNMSM_" target="_blank" data-original-title="Follow us on Twitter">

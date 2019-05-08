@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http , Headers} from '@angular/http';
 import { User } from '../interfaces/user.interface';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class UsersService {
   // tslint:disable-next-line:no-inferrable-types
   userURL: string = 'https://bibliotecabackend.herokuapp.com/usuarios';
 
-  constructor( private http: Http) {
+  constructor( private http: Http,private router: Router) {
     console.log('User Service Listo');
   }
 
@@ -39,14 +40,17 @@ export class UsersService {
         }));
 
   }
-  updateUser(user: User) {
+  updateUser(user) {
+    console.log(user);
 
     const body = JSON.stringify( user );
     const headers =  new  Headers({
       'Content-Type': 'application/json'
     });
 
-    return this.http.put( this.usersURL, body, { headers } )
+    //this.router.navigate(['/users']);
+
+    return this.http.put( "https://bibliotecabackend.herokuapp.com/usuarios/"+user.dni+"?Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n", body, { headers } )
         .pipe(map( res => {
           console.log(res.json());
           return res.json();

@@ -2,7 +2,7 @@
     <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/city-profile.jpg');"></div>
     <div class="main main-raised">
         <div class="profile-content">
-            <div class="container" *ngFor="let u of user">
+            <div class="container" >
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
@@ -15,7 +15,84 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-body" (ngSubmit)="guardar()">
+                <div class="container">
+                        <form (ngSubmit)="guardar()" #forma="ngForm" class="form-horizontal">
+                            <div class="form-row">
+                                <div class=" form-group col-md-6">
+                                    <label class="bmd-label-floating" for="name">Nombres</label>
+                                    <input [(ngModel)]="user.nombres"  type="text" class="form-control" id="name" name="nombres">
+                                </div>
+                                <div class=" form-group col-md-6">
+                                    <label class="bmd-label-floating" for="name">Apellidos</label>
+                                    <input [(ngModel)]="user.apellidos" type="text" class="form-control" name="apellidos" required id="name">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-md-3 ml-auto">
+                                    <label class="bmd-label-floating" for="inputdni">DNI</label>
+                                    <input [(ngModel)]="user.dni" name="dni" required type="text" class="form-control" id="inputdni">
+                                </div>
+                                <div class="form-group col-md-3 ml-auto">
+                                    <label class="bmd-label-floating" for="inputCod">Codigo</label>
+                                    <input [(ngModel)]="user.codigo" name="codigo" required type="text" class="form-control" id="inputCod">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="bmd-label-floating" for="inputEdad">Edad</label>
+                                    <input [(ngModel)]="user.edad" name="edad" type="number" required class="form-control" id="inputEdad">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputSex">Sexo</label>
+                                    <select [(ngModel)]="user.sexo" name="sexo" id="inputSex" class="form-control">
+                                        <option selected>Opcion...</option>
+                                        <option value=true>F</option>
+                                        <option value=false>M</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="bmd-label-floating" for="inputEmail1">Correo Institucional</label>
+                                    <input [(ngModel)]="user.correoInstitucional" name="correoInstitucional" required type="email" class="form-control" id="inputEmail1">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="bmd-label-floating" for="inputEmail2">Correo Personal</label>
+                                    <input [(ngModel)]="user.correoPersonal" name="correoPersonal" type="email" class="form-control" id="inputEmail2">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label class="bmd-label-floating" for="inputEid">Escuela</label>
+                                    <input [(ngModel)]="user.escuelaId" name="escuelaId" type="text" class="form-control" id="inputEid">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="bmd-label-floating" for="inputTel">Telefono</label>
+                                    <input [(ngModel)]="user.telefonoCasa" name="user.telefonoCasa" type="text" class="form-control" id="inputTel">
+                                </div>
+                                <div class="form-group col-md-5 ml-auto">
+                                    <label class="bmd-label-floating" for="inputCel">Celular</label>
+                                    <input [(ngModel)]="user.telefonoMovil" name="telefonoMovil" required type="text" class="form-control" id="inputCel">
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label class="bmd-label-floating" for="address">Dirección</label>
+                                <input [(ngModel)]="user.direccion" name="direccion" required type="address" class="form-control" id="address" placeholder="Direccion...">
+                            </div>
+                            <div class="form-group" routerLinkActive="active">
+                                <button type="button" class="btn btn-danger" [routerLink]="['/users']">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    Guardar Cambios
+                                </button>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                <!-- <div class="modal-body" (ngSubmit)="guardar()">
                     <fieldset>
                         <legend>Datos del Alumno</legend>
                         <table class="table table-bordered">
@@ -35,7 +112,7 @@
                             </div>
                         </table>
                     </fieldset>
-                </div>
+                </div> -->
                 <br>
                 <br>
             </div>
