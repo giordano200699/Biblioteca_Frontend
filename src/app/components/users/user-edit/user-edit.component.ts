@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user.interface';
+import { TipoUsuariosService } from '../../../services/tipoUsuarios.service';
 
 
 @Component({
@@ -25,8 +26,9 @@ export class UserEditComponent implements OnInit {
     telefonoCasa : '',
     telefonoMovil : '',
     direccion : '',
-    imagenId: 'http://i63.tinypic.com/14xfdx4.jpg',
-    contrasenia: ''
+    imagenId: '5cb20994a56d852ce808ca51',
+    contrasenia: '',
+    tipoUsuarioId: 1
   };
   constructor( private usersService: UsersService,
                private activatedRoute: ActivatedRoute,private router: Router ) {
