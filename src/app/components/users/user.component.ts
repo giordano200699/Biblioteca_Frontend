@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
     telefonoCasa : '',
     telefonoMovil : '',
     direccion : '',
-    imagenId: 'http://i63.tinypic.com/14xfdx4.jpg',
+    imagenId: '5cb20994a56d852ce808ca51',
     contrasenia: '',
     tipoUsuarioId: 1
   };
