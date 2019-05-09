@@ -24,7 +24,8 @@ export class UserComponent implements OnInit {
     telefonoMovil : '',
     direccion : '',
     imagenId: 'http://i63.tinypic.com/14xfdx4.jpg',
-    contrasenia: ''
+    contrasenia: '',
+    tipoUsuarioId: 1
   };
 
   id: string;
@@ -46,6 +47,7 @@ export class UserComponent implements OnInit {
   }
 
   guardar() {
+    console.log("AQUIIIIIIIIIIIIII");
     console.log(this.user);
 
     this.usersService.newUser( this.user )

@@ -27,7 +27,7 @@ export class UsersService {
   }
 
   newUser(user: User) {
-
+    console.log(user);
     const body = JSON.stringify( user );
     const headers =  new  Headers({
       'Content-Type': 'application/json'

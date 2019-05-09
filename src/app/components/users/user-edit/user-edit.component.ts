@@ -51,7 +51,6 @@ export class UserEditComponent implements OnInit {
     });
 
   }
-  
 
   mostrar() {
    console.log(this.user);
@@ -63,7 +62,6 @@ export class UserEditComponent implements OnInit {
     this.usersService.updateUser( this.user )
       .subscribe( data => {
       });
-      
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +13,7 @@ export class UsersComponent implements OnInit {
   closeResult: string;
 
   constructor(private usersService: UsersService,
-              private router: Router,private modalService: NgbModal) {
+              private router: Router) {
 
     this.usersService.getUsers()
         .subscribe( data => {
@@ -34,10 +33,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  modalBoton(usuario){
+  modalBoton(usuario) {
     this.usuarioBoton = usuario;
   }
-
-  
-
 }

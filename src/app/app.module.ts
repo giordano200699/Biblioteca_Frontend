@@ -21,6 +21,7 @@ import { UserProfileComponent } from './components/users/user-profile/user-profi
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { KeysPipe } from './pipes/keys.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     UsersComponent,
     UserComponent,
     UserProfileComponent,
-    UserEditComponent
+    UserEditComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
