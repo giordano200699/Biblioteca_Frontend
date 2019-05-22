@@ -10,7 +10,7 @@ import { Libro } from '../../../interfaces/libro.interface';
 })
 export class LibroEditComponent implements OnInit {
 
-  libro = [];
+  libro:Libro;
 
   constructor(private librosService: LibrosService,
               private activatedRoute: ActivatedRoute,

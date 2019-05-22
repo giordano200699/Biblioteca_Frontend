@@ -11,7 +11,7 @@ import { TipoUsuariosService } from '../../../services/tipoUsuarios.service';
 })
 export class UserEditComponent implements OnInit {
 
-  user = [];
+  user:User;
   usuario: User = {
     dni: '',
     nombres: '',
