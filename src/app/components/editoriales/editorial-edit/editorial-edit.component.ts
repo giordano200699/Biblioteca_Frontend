@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute } from '@angular/router';
 import { Editorial } from '../../../interfaces/editorial.interface';
 import { editorialesService} from '../../../services/editoriales.service';
-import { Editorial } from '../../../interfaces/editorial.interface';
 
 @Component({
   selector: 'app-editorial-edit',
