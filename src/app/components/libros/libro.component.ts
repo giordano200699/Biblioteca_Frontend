@@ -36,7 +36,7 @@ export class LibroComponent implements OnInit {
         this.activatedRoute.params
               .subscribe(parametros => {
                   console.log(parametros);
-                  this.id = parametros[' id '];
+                  this.id = parametros['id'];
               });
   }
   ngOnInit() {

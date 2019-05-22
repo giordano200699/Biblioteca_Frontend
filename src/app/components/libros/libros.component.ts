@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibrosService } from '../../services/libros.service';
 import { Router } from '@angular/router';
-import { log } from 'util';
 @Component({
   selector: 'app-libros',
   templateUrl: './libros.component.html',

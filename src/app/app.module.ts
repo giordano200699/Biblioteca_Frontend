@@ -33,6 +33,8 @@ import { EditorialesComponent } from './components/editoriales/editoriales.compo
 import { AutoresComponent } from './components/autores/autores.component';
 import { EditorialComponent } from './components/editoriales/editorial.component';
 import { EditorialEditComponent } from './components/editoriales/editorial-edit/editorial-edit.component';
+import { AutorComponent } from './components/autores/autor.component';
+import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { EditorialEditComponent } from './components/editoriales/editorial-edit/
     EditorialesComponent,
     AutoresComponent,
     EditorialComponent,
-    EditorialEditComponent
+    EditorialEditComponent,
+    AutorComponent,
+    AutorEditComponent
   ],
   imports: [
     BrowserModule,

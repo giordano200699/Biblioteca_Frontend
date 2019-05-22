@@ -1,3 +1,102 @@
-<p>
-  autores works!
-</p>
+<body class="profile-page sidebar-collapse">
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-dark">
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                      </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/users']">Alumnos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/libros']">Libros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/editoriales']">Editoriales</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/autores']">Autores</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div>
+                    <h3>Bienvenido,Administrador</h3>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div class="panel-heading text-uppercase">Autores:</div>
+                        <br>
+                        <div class="panel-body">
+                            <p>Solo usted como administrador tiene acceso a esta sección.</p>
+                            <p>Desde aquí es posible gestionar la información de los autores.</p>
+                            <div class="row">
+                                <div class="col-md-10 text-right">
+                                    <button type="button" name="button" [routerLink]="['/autor','nuevo']" class="btn btn-success">
+                                      Nuevo Autor
+                                  </button>
+                                </div>
+                            </div>
+                            <br>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th>ID</th>
+                                        <th>Nombre de autor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let autor of autores">
+                                        <td>{{autor.autorId}}</td>
+                                        <td>{{autor.nombre}}</td>
+                                        <td class="td-actions text-right">
+                                            <!--
+                                            <button type="button" rel="tooltip" title="Ver Perfil" class="btn btn-info btn-simple btn-xs">
+                                              <i class="fa fa-user"></i>
+                                            </button>-->
+                                            <button type="button" (click)="editarAutor(autor.autorId)" rel="tooltip" title="Editar Perfil" class="btn btn-success btn-simple btn-xs">
+                                              <i class="fa fa-edit"></i>
+                                          </button>
+
+                                            <!-- Button trigger modal [routerLink]="['/update',user.dni]" (click)="modalBoton(user)"-->
+                                            <button type="button" class="btn btn-danger btn-simple btn-xs" type="button" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal" (click)="modalBoton(autor)">
+                                              <i class="fa fa-times"></i>
+                                          </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ELIMINACION DE AUTOR</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                </div>
+                <div class="modal-body">
+                    Esta seguro de eliminar al autor con nombre: {{autorBoton.nombre}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button (click)="deleteAutor(autorBoton.autorId)" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

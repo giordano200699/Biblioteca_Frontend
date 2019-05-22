@@ -15,6 +15,8 @@ import { EditorialesComponent } from './components/editoriales/editoriales.compo
 import { EditorialComponent } from './components/editoriales/editorial.component';
 import { EditorialEditComponent } from './components/editoriales/editorial-edit/editorial-edit.component';
 import { AutoresComponent } from './components/autores/autores.component';
+import { AutorComponent } from './components/autores/autor.component';
+import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
 import { AuthGuard } from './_guards';
 
 const APP_ROUTES: Routes = [
@@ -33,6 +35,8 @@ const APP_ROUTES: Routes = [
   { path: 'editorial/:id', component: EditorialComponent },
   { path: 'edita/:id', component: EditorialEditComponent },
   { path: 'autores', component: AutoresComponent, canActivate: [AuthGuard]},
+  { path: 'autor/:id', component: AutorComponent },
+  { path: 'editar/:id', component: AutorEditComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 

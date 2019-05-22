@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute } from '@angular/router';
-import { Editorial } from '../../interfaces/editorial.interface';
-import { editorialesService} from '../../services/editoriales.service';
+import { Autor } from '../../interfaces/autor.interface';
+import { AutoresService} from '../../services/autores.service';
+
 @Component({
-  selector: 'app-editorial',
-  templateUrl: './editorial.component.html',
+  selector: 'app-autor',
+  templateUrl: './autor.component.html',
   styles: []
 })
-export class EditorialComponent implements OnInit {
+export class AutorComponent implements OnInit {
 
-  editorial: Editorial = {
+  autor: Autor = {
     nombre: ''
   };
   id: string;
-  constructor(private editorialesServic: editorialesService,
+  constructor(private editorialesServic: AutoresService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
 
@@ -28,16 +29,16 @@ export class EditorialComponent implements OnInit {
   }
 
   guardar() {
-    console.log(this.editorial);
+    console.log(this.autor);
 
-    this.editorialesServic.newEditorial( this.editorial )
+    this.editorialesServic.newAutor( this.autor )
       .subscribe( data => {
       });
       this.limpiar();
   }
 
   private limpiar() {
-    this.editorial.nombre = '';
+    this.autor.nombre = '';
   }
 
 }
