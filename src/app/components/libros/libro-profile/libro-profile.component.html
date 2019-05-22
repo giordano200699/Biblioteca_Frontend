@@ -1,0 +1,83 @@
+<body class="profile-page sidebar-collapse">
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/city-profile.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="card" *ngFor="let l of libro">
+                <div class="card-header card-header-text card-header-primary">
+                    <div class="card-text">
+                        <h4 class="card-title">DATOS DEL LIBRO</h4>
+                    </div>
+                </div>
+                <div class="container" *ngFor="let l of libro">
+                    <div class="modal-body">
+                        <fieldset>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Nombres</th>
+                                        <td>{{l.titulo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Apellidos</th>
+                                        <td>{{l.tituloSecundario}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DNI</th>
+                                        <td>{{l.clasificacion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <td>{{l.anio}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Edad</th>
+                                        <td>{{l.edicion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sexo</th>
+                                        <td>{{l.resumen}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estado</th>
+                                        <td>{{l.capitulos}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Correo Institucional</th>
+                                        <td>{{l.isbn}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Correo Personal</th>
+                                        <td>{{l.extension}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Escuela</th>
+                                        <td>{{l.observaciones}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Telefono</th>
+                                        <td>{{l.dimensiones}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Celular</th>
+                                        <td>{{l.acompanamiento}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dirección</th>
+                                        <td>{{l.palabrasClaves}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contraseña</th>
+                                        <td>{{l.tomo}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

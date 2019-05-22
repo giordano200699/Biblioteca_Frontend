@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser( dni: string ) {
-    console.log("esta eliminando");
+    console.log('esta eliminando');
     this.usuarioBoton = null;
     this.usersService.borrarUser(dni)
       .subscribe( respuesta => {

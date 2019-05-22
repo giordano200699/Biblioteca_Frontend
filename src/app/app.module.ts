@@ -7,6 +7,9 @@ import { HttpModule} from '@angular/http';
 import { APP_ROUTING } from './app.routes';
 // Services
 import { UsersService } from './services/users.service';
+import { LibrosService } from './services/libros.service';
+import { AutoresService } from './services/autores.service';
+import { editorialesService } from './services/editoriales.service';
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -22,6 +25,17 @@ import { UserEditComponent } from './components/users/user-edit/user-edit.compon
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { KeysPipe } from './pipes/keys.pipe';
+import { LibrosComponent } from './components/libros/libros.component';
+import { LibroComponent } from './components/libros/libro.component';
+import { LibroEditComponent } from './components/libros/libro-edit/libro-edit.component';
+import { LibroProfileComponent } from './components/libros/libro-profile/libro-profile.component';
+import { EditorialesComponent } from './components/editoriales/editoriales.component';
+import { AutoresComponent } from './components/autores/autores.component';
+import { EditorialComponent } from './components/editoriales/editorial.component';
+import { EditorialEditComponent } from './components/editoriales/editorial-edit/editorial-edit.component';
+import { AutorComponent } from './components/autores/autor.component';
+import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +50,17 @@ import { KeysPipe } from './pipes/keys.pipe';
     UserComponent,
     UserProfileComponent,
     UserEditComponent,
-    KeysPipe
+    KeysPipe,
+    LibrosComponent,
+    LibroComponent,
+    LibroEditComponent,
+    LibroProfileComponent,
+    EditorialesComponent,
+    AutoresComponent,
+    EditorialComponent,
+    EditorialEditComponent,
+    AutorComponent,
+    AutorEditComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +70,10 @@ import { KeysPipe } from './pipes/keys.pipe';
     APP_ROUTING
   ],
   providers: [
-    UsersService
+    UsersService,
+    LibrosService,
+    editorialesService,
+    AutoresService
   ],
   bootstrap: [AppComponent]
 })

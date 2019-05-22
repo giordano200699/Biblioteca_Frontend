@@ -47,7 +47,6 @@ export class UserComponent implements OnInit {
   }
 
   guardar() {
-    console.log("AQUIIIIIIIIIIIIII");
     console.log(this.user);
 
     this.usersService.newUser( this.user )

@@ -1,0 +1,75 @@
+import { Injectable } from '@angular/core';
+import { Http , Headers} from '@angular/http';
+import { Libro } from '../interfaces/libro.interface';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LibrosService {
+  librosURL: string = 'https://bibliotecabackend.herokuapp.com/libros?' +
+                      'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
+                      'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
+                      'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
+                      '6eiCuXJ3gkOfX8C4n';
+
+  clave: string = 'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
+                  'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
+                  'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
+                  '6eiCuXJ3gkOfX8C4n';
+
+  libroURL: string = 'https://bibliotecabackend.herokuapp.com/libros';
+
+  constructor(private http: Http, private router: Router) {
+    console.log('Servicio Libro Listo');
+  }
+
+  newLibro(libro: Libro) {
+    console.log(libro);
+    const body = JSON.stringify( libro );
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post( this.librosURL, body, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
+
+  updateLibro(libro) {
+    console.log(libro);
+
+    const body = JSON.stringify( libro );
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    const url =  `${ this.libroURL }/${ libro.libroId }?${ this.clave }`;
+    return this.http.put( url, body, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
+
+  getLibros() {
+
+    return this.http.get(this.librosURL)
+        .pipe(map( res => res.json()));
+  }
+
+  getLibro( id: string ) {
+    const url =  `${ this.libroURL }/${ id }?${ this.clave }`;
+    return this.http.get(url)
+      .pipe(map( res => res.json()));
+  }
+
+
+  borrarLibro( id: string ) {
+    const url =  `${ this.libroURL }/${ id }?${ this.clave }`;
+    return this.http.delete( url )
+      .pipe(map( res => res.json()));
+  }
+}

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="/home">LibFISI </a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar"></span>
         <span class="navbar-toggler-bar"></span>
         <span class="navbar-toggler-bar"></span>
@@ -38,9 +38,9 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="isLogin()">
-                        <a class="btn btn-link" (click)="cerrarSesion()">
-                            <i class="material-icons">exit_to_app</i> Cerrar Sesión
-                        </a>
+                    <a class="btn btn-link" (click)="cerrarSesion()">
+                        <i class="material-icons">exit_to_app</i> Cerrar Sesión
+                    </a>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
                     <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/UNMSM_" target="_blank" data-original-title="Follow us on Twitter">

@@ -1,0 +1,56 @@
+<body class="profile-page sidebar-collapse">
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="card">
+                <div class="card-header card-header-text card-header-primary">
+                    <div class="card-text">
+                        <h4 class="card-title">Editar editorial</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>Llenar el siguiente formulario:</p>
+                </div>
+                <div class="container">
+                    <form (ngSubmit)="guardar()" #forma="ngForm" class="form-horizontal">
+                        <div class="form-row">
+                            <div class=" form-group col-md-6">
+                                <label class="bmd-label-floating" for="name">NOMBRE DE editorial</label>
+                                <input [(ngModel)]="editorial.nombre" type="text" class="form-control" id="name" name="nombres">
+                            </div>
+                        </div>
+                        <div class="form-group" routerLinkActive="active">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/editoriales']">
+                              Cancelar
+                          </button>
+                            <!-- Button trigger modal -->
+                            <button type="button" [disabled]="!forma.valid" class="btn btn-success" type="submit" rel="tooltip" title="editar" data-toggle="modal" data-target="#exampleModal">
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">EDITAR EDITORIAL</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                </div>
+                <div class="modal-body">
+                    EDITORIAL ACTUALIZADA CON ÉXITO!!
+                </div>
+                <div class="modal-footer">
+                    <button [routerLink]="['/editoriales']" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
