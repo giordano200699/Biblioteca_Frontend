@@ -83,7 +83,7 @@
                                 Cancelar
                             </button>
                             <!-- Button trigger modal -->
-                            <button type="button" [disabled]="!forma.valid" class="btn btn-success" type="submit" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal" (click)="modalBoton(user)">
+                            <button type="button" [disabled]="!forma.valid" class="btn btn-success" type="submit" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal">
                                 Guardar Cambios
                             </button>
                         </div>
@@ -103,7 +103,7 @@
                                 </button>
                 </div>
                 <div class="modal-body">
-                    UUSUARIO CREADO CON ÉXITO!!
+                    USUARIO CREADO CON ÉXITO!!
                 </div>
                 <div class="modal-footer">
                     <button [routerLink]="['/users']" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
