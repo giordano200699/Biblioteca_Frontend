@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http , Headers} from '@angular/http';
 import { Libro } from '../interfaces/libro.interface';
+import { AutorLibro } from '../interfaces/autorlibro.interface';
+import { EditorialLibro } from '../interfaces/editoriallibro.interface';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -21,6 +23,8 @@ export class LibrosService {
 
   libroURL: string = 'https://bibliotecabackend.herokuapp.com/libros';
 
+  id: string;
+
   constructor(private http: Http, private router: Router) {
     console.log('Servicio Libro Listo');
   }
@@ -38,7 +42,6 @@ export class LibrosService {
           return res.json();
         }));
   }
-
   updateLibro(libro) {
     console.log(libro);
 
@@ -66,6 +69,47 @@ export class LibrosService {
       .pipe(map( res => res.json()));
   }
 
+  relacionAutorLibro(autorLibro: AutorLibro) {
+    console.log(autorLibro);
+    const body = JSON.stringify( autorLibro );
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    const url =  `${ this.libroURL }/autores/${ autorLibro.libroId }/${ autorLibro.autorId }?${ this.clave }`;
+    return this.http.post( url, body, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
+
+  relacionEditorialLibro(editorialLibro: EditorialLibro) {
+    console.log(editorialLibro);
+    const body = JSON.stringify( editorialLibro );
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    const url =  `${ this.libroURL }/editoriales/${ editorialLibro.libroId }/${ editorialLibro.editorialId }?${ this.clave }`;
+    return this.http.post( url, body, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
+
+  getrelAutorLibro(id: string) {
+    const url =  `${ this.libroURL }/autores/${ id }?${ this.clave }`;
+    console.log(url);
+    return this.http.get(url)
+    .pipe(map( res => res.json()));
+  }
+
+  getrelEditorialLibro(id: string) {
+    const url =  `${ this.libroURL }/editoriales/${ id }?${ this.clave }`;
+    console.log(url);
+    return this.http.get(url)
+    .pipe(map( res => res.json()));
+  }
 
   borrarLibro( id: string ) {
     const url =  `${ this.libroURL }/${ id }?${ this.clave }`;

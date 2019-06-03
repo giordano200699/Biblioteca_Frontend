@@ -33,8 +33,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  cerrarSesion():void{
-    console.log("cerrandoSesion");
+  cerrarSesion(): void {
+    console.log('cerrandoSesion');
     this.autentificacion.logout();
     this.router.navigate(['/home']);
   }

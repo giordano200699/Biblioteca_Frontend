@@ -37,11 +37,17 @@
                                 <label class="bmd-label-floating" for="inputCod">Codigo</label>
                                 <input [(ngModel)]="user.codigo" name="codigo" required type="text" class="form-control" id="inputCod">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4 ml-auto">
+                                <label class="bmd-label-floating" for="tipo">Tipo Usuario</label>
+                                <select [(ngModel)]="user.tipoUsuarioId" name="tipo" id="tipo" class="form-control">
+                                    <option [value] = "tipo.id" *ngFor="let tipo of tipos" value=true>{{ tipo.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-1">
                                 <label class="bmd-label-floating" for="inputEdad">Edad</label>
                                 <input [(ngModel)]="user.edad" name="edad" type="number" required class="form-control" id="inputEdad">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-1">
                                 <label for="inputSex">Sexo</label>
                                 <select [(ngModel)]="user.sexo" name="sexo" id="inputSex" class="form-control">
                                         <option selected>Opcion...</option>
@@ -116,4 +122,4 @@
             </div>
         </div>
     </div>
-</body>
+</body>s

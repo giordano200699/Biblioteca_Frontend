@@ -17,11 +17,26 @@
                         <div class="form-row">
                             <div class=" form-group col-md-6">
                                 <label class="bmd-label-floating" for="titulo">Titulo</label>
-                                <input [(ngModel)]="libro.titulo" type="text" class="form-control" id="titutlo" name="titulo">
+                                <input [(ngModel)]="libro.titulo" type="text" class="form-control" id="titulo" name="titulo">
                             </div>
                             <div class=" form-group col-md-6">
                                 <label class="bmd-label-floating" for="tituloSecundario">Titulo Secundario</label>
                                 <input [(ngModel)]="libro.tituloSecundario" type="text" class="form-control" name="tituloSecundario" required id="tituloSecundario">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class=" form-group col-md-6">
+                                <label class="bmd-label-floating" for="autor">Autor</label>
+                                <select [(ngModel)]="idautor" name="autor" id="autor" class="form-control">
+                                    <option [value] = "autor.autorId" *ngFor="let autor of autores" value=true>{{ autor.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class=" form-group col-md-6">
+                                <label class="bmd-label-floating" for="editorial">Editorial</label>
+                                <select [(ngModel)]="ideditorial" name="editorial" id="editorial" class="form-control">
+                                    <option [value] = "editorial.editorialId" *ngFor="let editorial of editoriales" value=true>{{ editorial.nombre }}</option>
+                                </select>
                             </div>
                         </div>
                         <br>
@@ -92,6 +107,14 @@
             </div>
         </div>
     </div>
+    <br> <br>
+    <!---<div class="card form-group col-md-6">
+        <div class="card-header card-header-text card-header-primary">
+            <div class="card-text">
+                <h4 class="card-title">ITEM</h4>
+            </div>
+        </div>
+    </div>-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

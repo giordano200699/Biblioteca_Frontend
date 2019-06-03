@@ -15,7 +15,7 @@ export class AutorComponent implements OnInit {
     nombre: ''
   };
   id: string;
-  constructor(private editorialesServic: AutoresService,
+  constructor(private autoresService: AutoresService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
 
@@ -31,10 +31,10 @@ export class AutorComponent implements OnInit {
   guardar() {
     console.log(this.autor);
 
-    this.editorialesServic.newAutor( this.autor )
+    this.autoresService.newAutor( this.autor )
       .subscribe( data => {
       });
-      this.limpiar();
+    this.limpiar();
   }
 
   private limpiar() {
