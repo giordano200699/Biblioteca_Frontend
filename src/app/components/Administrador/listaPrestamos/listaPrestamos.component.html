@@ -1,0 +1,70 @@
+<body class="profile-page sidebar-collapse">
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-dark">
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/users']">Alumnos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/libros']">Libros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/editoriales']">Editoriales</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/autores']">Autores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/administrador/prestamos']">Préstamos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div  style="padding-bottom: 30px; margin-bottom:100px;">
+                    <h3>Lista de Pedidos actuales</h3>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <p>Solo usted como administrador tiene acceso a esta sección.</p>
+                            <p>Desde aquí es posible gestionar la información de los pedidos y préstamos actuales.</p>
+                            <br>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th>Usuario</th>
+                                        <th>Código</th>
+                                        <th>Fecha del Pedido</th>
+                                        <th>Item</th>
+                                        <th>Aceptar</th>
+                                        <th>Rechazar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pedido of pedidos">
+                                        <td style="vertical-align: middle;">{{pedido.apellidos+' '+pedido.nombres}}</td>
+                                        <td style="vertical-align: middle;">{{pedido.codigo}}</td>
+                                        <td style="vertical-align: middle;">{{pedido.fechaInicio}}</td>
+                                        <td style="vertical-align: middle;">{{pedido.itemId}}</td>
+                                        <td><a class="btn btn-success" (click)="aceptar(pedido)">Aceptar</a></td>
+                                        <td><a class="btn btn-danger" (click)="rechazar(pedido)">Rechazar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

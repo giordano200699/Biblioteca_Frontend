@@ -17,6 +17,7 @@ import { EditorialEditComponent } from './components/editoriales/editorial-edit/
 import { AutoresComponent } from './components/autores/autores.component';
 import { AutorComponent } from './components/autores/autor.component';
 import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
+import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
 import { AuthGuard } from './_guards';
 
 const APP_ROUTES: Routes = [
@@ -37,6 +38,7 @@ const APP_ROUTES: Routes = [
   { path: 'autores', component: AutoresComponent, canActivate: [AuthGuard]},
   { path: 'autor/:id', component: AutorComponent },
   { path: 'editar/:id', component: AutorEditComponent },
+  { path: 'administrador/prestamos', component: ListaPrestamosComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 

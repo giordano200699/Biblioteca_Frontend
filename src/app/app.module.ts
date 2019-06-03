@@ -37,6 +37,7 @@ import { EditorialEditComponent } from './components/editoriales/editorial-edit/
 import { AutorComponent } from './components/autores/autor.component';
 import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
 import { ItemsComponent } from './components/libros/items/items.component';
+import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
 
 
 
@@ -64,7 +65,8 @@ import { ItemsComponent } from './components/libros/items/items.component';
     EditorialEditComponent,
     AutorComponent,
     AutorEditComponent,
-    ItemsComponent
+    ItemsComponent,
+    ListaPrestamosComponent
   ],
   imports: [
     BrowserModule,
