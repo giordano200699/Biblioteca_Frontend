@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user.interface';
+import { TipoU } from '../../../interfaces/tipou.interface';
 import { TipoUsuariosService } from '../../../services/tipoUsuarios.service';
 
 
@@ -11,33 +12,23 @@ import { TipoUsuariosService } from '../../../services/tipoUsuarios.service';
 })
 export class UserEditComponent implements OnInit {
 
-  user:User;
-  usuario: User = {
-    dni: '',
-    nombres: '',
-    apellidos: '',
-    edad: null,
-    sexo: false,
-    estado: 0,
-    codigo: '',
-    correoInstitucional : '',
-    correoPersonal : '',
-    escuelaId : '',
-    telefonoCasa : '',
-    telefonoMovil : '',
-    direccion : '',
-    imagenId: '5cb20994a56d852ce808ca51',
-    contrasenia: '',
-    tipoUsuarioId: 1
-  };
+  tipos: TipoU[] = [];
+  user: User;
+
   constructor( private usersService: UsersService,
-               private activatedRoute: ActivatedRoute,private router: Router ) {
+               private activatedRoute: ActivatedRoute,
+               private router: Router ) {
 
     this.activatedRoute.params.subscribe( params => {
 
       this.getUser( params['dni'] );
 
     });
+
+    this.usersService.getTiposU()
+            .subscribe( data => {
+              this.tipos = data;
+            });
   }
 
   ngOnInit() {

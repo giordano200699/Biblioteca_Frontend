@@ -15,5 +15,6 @@ export interface User {
   direccion ?: string;
   imagenId?: string;
   contrasenia: string;
-  tipoUsuarioId: number;
+  tipoUsuarioId: string;
 }
+

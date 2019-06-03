@@ -1,5 +1,5 @@
 export interface Editorial {
-    nombre: string;
-    _id?: string;
-    editorialId?: any;
-  }
+  _id?: string;
+  nombre: string;
+  editorialId?: number;
+}

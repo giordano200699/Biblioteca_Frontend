@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
+import { TipoU } from '../../interfaces/tipou.interface';
 import { UsersService } from '../../services/users.service';
 @Component({
   selector: 'app-user',
@@ -9,6 +10,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserComponent implements OnInit {
 
+  tipos: TipoU[] = [];
   user: User = {
     dni: '',
     nombres: '',
@@ -25,7 +27,7 @@ export class UserComponent implements OnInit {
     direccion : '',
     imagenId: '5cb20994a56d852ce808ca51',
     contrasenia: '',
-    tipoUsuarioId: 1
+    tipoUsuarioId: null
   };
 
   id: string;
@@ -40,10 +42,15 @@ export class UserComponent implements OnInit {
                 this.id = parametros['id'];
 
             });
+        this.usersService.getTiposU()
+            .subscribe( data => {
+              this.tipos = data;
+            });
 
   }
 
   ngOnInit() {
+    this.limpiar();
   }
 
   guardar() {
@@ -52,7 +59,8 @@ export class UserComponent implements OnInit {
     this.usersService.newUser( this.user )
       .subscribe( data => {
       });
-      this.limpiar();
+
+    this.limpiar();
   }
 
   private limpiar() {
@@ -69,8 +77,9 @@ export class UserComponent implements OnInit {
     this.user.telefonoCasa = '',
     this.user.telefonoMovil = '',
     this.user.direccion = '',
-    this.user.imagenId = 'http://i63.tinypic.com/14xfdx4.jpg',
+    this.user.imagenId = '',
     this.user.contrasenia = '';
+    this.user.tipoUsuarioId = null;
   }
 
 }

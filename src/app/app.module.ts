@@ -10,6 +10,7 @@ import { UsersService } from './services/users.service';
 import { LibrosService } from './services/libros.service';
 import { AutoresService } from './services/autores.service';
 import { editorialesService } from './services/editoriales.service';
+import { ItemsService } from './services/items.service';
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -35,6 +36,8 @@ import { EditorialComponent } from './components/editoriales/editorial.component
 import { EditorialEditComponent } from './components/editoriales/editorial-edit/editorial-edit.component';
 import { AutorComponent } from './components/autores/autor.component';
 import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
+import { ItemsComponent } from './components/libros/items/items.component';
+
 
 
 @NgModule({
@@ -60,7 +63,8 @@ import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.c
     EditorialComponent,
     EditorialEditComponent,
     AutorComponent,
-    AutorEditComponent
+    AutorEditComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.c
     UsersService,
     LibrosService,
     editorialesService,
-    AutoresService
+    AutoresService,
+    ItemsService
   ],
   bootstrap: [AppComponent]
 })

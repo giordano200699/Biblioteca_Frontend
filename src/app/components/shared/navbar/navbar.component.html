@@ -1,7 +1,9 @@
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="/home">LibFISI </a>
+            <a class="navbar-brand" href="/home">
+                <h2>LibFISI </h2>
+            </a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar"></span>
         <span class="navbar-toggler-bar"></span>
@@ -15,32 +17,34 @@
                         INTRANET
                     </a>
                 </li>
-                <!-- <li class="nav-item dropdown" *ngIf="isLogin()">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" [routerLink]="['/users']" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        PERFIL <span class="caret"></span>
+                <li class="nav-item dropdown" *ngIf="isLogin()">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        USUARIO
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <li class="nav-item">
-                            <a class="btn btn-link" (click)="cerrarSesion()">
-                                <i class="material-icons">exit_to_app</i> Cerrar Sesión
+
+                        <li class="nav-item" *ngIf="isLogin()">
+                            <a class="nav-link" [routerLink]="['/perfil']">
+                                PERFIL
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLogin()">
+                            <a class="nav-link" [routerLink]="['/users']">
+                                DASHBOARD
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLogin()">
+                            <a class="nav-link" href="">
+                                HOME
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLogin()">
+                            <a class="nav-link" *ngIf="isLogin()" (click)="cerrarSesion()">
+                                DESCONECTARSE<i class="material-icons">exit_to_app</i>
                             </a>
                         </li>
                     </ul>
-                </li> -->
-                <li class="nav-item" *ngIf="isLogin()">
-                    <a class="nav-link" [routerLink]="['/perfil']">
-                        Mi Perfil
-                    </a>
-                </li>
-                <li class="nav-item" *ngIf="isLogin()">
-                    <a class="nav-link" [routerLink]="['/users']">
-                        Usuarios
-                    </a>
-                </li>
-                <li class="nav-item" *ngIf="isLogin()">
-                    <a class="btn btn-link" (click)="cerrarSesion()">
-                        <i class="material-icons">exit_to_app</i> Cerrar Sesión
-                    </a>
                 </li>
                 <li class="nav-item" *ngIf="isHome()">
                     <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/UNMSM_" target="_blank" data-original-title="Follow us on Twitter">

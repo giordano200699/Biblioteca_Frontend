@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute } from '@angular/router';
 import { Libro } from '../../interfaces/libro.interface';
+import { Autor } from '../../interfaces/autor.interface';
+import { AutorLibro } from '../../interfaces/autorlibro.interface';
+import { Editorial } from '../../interfaces/editorial.interface';
 import { LibrosService } from '../../services/libros.service';
+import { AutoresService } from '../../services/autores.service';
+import { editorialesService } from '../../services/editoriales.service';
+import { EditorialLibro } from '../../interfaces/editoriallibro.interface';
 
 @Component({
   selector: 'app-libro',
@@ -11,6 +17,19 @@ import { LibrosService } from '../../services/libros.service';
 })
 export class LibroComponent implements OnInit {
 
+  autores: Autor [] = [];
+  editoriales: Editorial [] = [];
+  idlibro: number;
+  idautor: number;
+  ideditorial: number;
+  editorialLibro: EditorialLibro = {
+    libroId: null,
+    editorialId: null
+  };
+  autorLibro: AutorLibro = {
+    libroId: null,
+    autorId: null
+  };
   libro: Libro = {
     titulo: '',
     tituloSecundario: '',
@@ -18,18 +37,21 @@ export class LibroComponent implements OnInit {
     anio: null,
     edicion: null,
     resumen: '',
-    capitulos: '',
-    isbn: '',
-    extension: null,
+    capitulos : '',
+    isbn : '',
+    extension : null,
     observaciones: '',
-    dimensiones: '',
+    dimensiones : '',
     acompaniamiento: '',
-    palabrasClaves: '',
-    tomo: null
+    palabrasClaves : '',
+    tomo: null,
+    libroId: null
   };
 
   id: string;
-  constructor(private usersService: LibrosService,
+  constructor(private librosService: LibrosService,
+              private autoresService: AutoresService,
+              private editorialeService: editorialesService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
 
@@ -38,17 +60,45 @@ export class LibroComponent implements OnInit {
                   console.log(parametros);
                   this.id = parametros['id'];
               });
+        this.autoresService.getAutores()
+            .subscribe( data => {
+              this.autores = data;
+            });
+        this.editorialeService.getEditoriales()
+            .subscribe( data => {
+              this.editoriales = data;
+            });
+
   }
   ngOnInit() {
   }
 
   guardar() {
-    console.log(this.libro);
 
-    this.usersService.newLibro( this.libro )
+    this.librosService.newLibro( this.libro )
+      .subscribe( data => {
+        this.idlibro = data.libroId;
+        console.log(this.idlibro);
+        this.relacionar();
+      });
+    this.limpiar();
+  }
+
+  relacionar() {
+
+    this.autorLibro.autorId = this.idautor;
+    this.autorLibro.libroId = this.idlibro;
+    this.editorialLibro.editorialId = this.ideditorial;
+    this.editorialLibro.libroId = this.idlibro;
+    console.log(this.autorLibro);
+    console.log(this.editorialLibro);
+    this.librosService.relacionAutorLibro( this.autorLibro )
       .subscribe( data => {
       });
-      this.limpiar();
+
+    this.librosService.relacionEditorialLibro( this.editorialLibro )
+      .subscribe( data => {
+      });
   }
 
   private limpiar() {

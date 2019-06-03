@@ -33,7 +33,7 @@ export class EditorialComponent implements OnInit {
     this.editorialesServic.newEditorial( this.editorial )
       .subscribe( data => {
       });
-      this.limpiar();
+    this.limpiar();
   }
 
   private limpiar() {

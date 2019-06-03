@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoresService } from '../../services/autores.service';
+import { Autor } from '../../interfaces/autor.interface';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-autores',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AutoresComponent implements OnInit {
 
-  autores: any[] = [];
+  autores: Autor[] = [];
   autorBoton;
   idAutor: string;
 

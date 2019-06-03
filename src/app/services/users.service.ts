@@ -14,15 +14,16 @@ export class UsersService {
                       'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                       '6eiCuXJ3gkOfX8C4n';
 
-  clave: string = 'clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
+  clave: string = 'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
                   'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
   // tslint:disable-next-line:no-inferrable-types
   userURL: string = 'https://bibliotecabackend.herokuapp.com/usuarios';
+  tipoURL: string = 'https://bibliotecabackend.herokuapp.com/tipoUsuarios';
 
-  constructor( private http: Http,private router: Router) {
+  constructor( private http: Http, private router: Router) {
     console.log('User Service Listo');
   }
 
@@ -47,10 +48,8 @@ export class UsersService {
     const headers =  new  Headers({
       'Content-Type': 'application/json'
     });
-
-    //this.router.navigate(['/users']);
-
-    return this.http.put( "https://bibliotecabackend.herokuapp.com/usuarios/"+user.dni+"?Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n", body, { headers } )
+    const url = `${ this.userURL }/${user.dni}?${ this.clave }`;
+    return this.http.put( url, body, { headers } )
         .pipe(map( res => {
           console.log(res.json());
           return res.json();
@@ -60,6 +59,12 @@ export class UsersService {
   getUsers() {
 
     return this.http.get(this.usersURL)
+        .pipe(map( res => res.json()));
+  }
+
+  getTiposU() {
+    const url = `${ this.tipoURL }?${ this.clave }`;
+    return this.http.get(url)
         .pipe(map( res => res.json()));
   }
 
