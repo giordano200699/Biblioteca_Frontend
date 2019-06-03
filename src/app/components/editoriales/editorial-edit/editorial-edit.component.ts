@@ -11,7 +11,7 @@ import { editorialesService} from '../../../services/editoriales.service';
 })
 export class EditorialEditComponent implements OnInit {
 
-  editorial = [];
+  editorial:Editorial;
 
   constructor(private editorialesServic: editorialesService,
               private router: Router,

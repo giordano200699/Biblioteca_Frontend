@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute } from '@angular/router';
 import { AutoresService} from '../../../services/autores.service';
+import { Autor } from '../../../interfaces/autor.interface';
 
 @Component({
   selector: 'app-autor-edit',
@@ -10,7 +11,7 @@ import { AutoresService} from '../../../services/autores.service';
 })
 export class AutorEditComponent implements OnInit {
 
-  autor = [];
+  autor:Autor;
 
   constructor(private autoresServic: AutoresService,
               private router: Router,
