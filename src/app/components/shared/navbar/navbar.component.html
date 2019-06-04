@@ -5,10 +5,10 @@
                 <h2>LibFISI </h2>
             </a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-bar"></span>
-        <span class="navbar-toggler-bar"></span>
-        <span class="navbar-toggler-bar"></span>
-      </button>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item dropdown" *ngIf="isLogin()">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        USUARIO
+                        {{user.nombres}}
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -29,18 +29,24 @@
                                 PERFIL
                             </a>
                         </li>
-                        <li class="nav-item" *ngIf="isLogin()">
+                        <!--
+                        <li class="nav-item" *ngIf="isAdmin()">
                             <a class="nav-link" [routerLink]="['/users']">
                                 DASHBOARD
                             </a>
                         </li>
+                        <li class="nav-item" *ngIf="isAlumno()">
+                            <a class="nav-link" [routerLink]="['/prestamos']">
+                                PRESTAMOS
+                            </a>
+                        </li>-->
                         <li class="nav-item" *ngIf="isLogin()">
                             <a class="nav-link" href="">
                                 HOME
                             </a>
                         </li>
                         <li class="nav-item" *ngIf="isLogin()">
-                            <a class="nav-link" *ngIf="isLogin()" (click)="cerrarSesion()">
+                            <a class="nav-link" (click)="cerrarSesion()">
                                 DESCONECTARSE<i class="material-icons">exit_to_app</i>
                             </a>
                         </li>
@@ -64,4 +70,3 @@
             </ul>
         </div>
     </div>
-</nav>

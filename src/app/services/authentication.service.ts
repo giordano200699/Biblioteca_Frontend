@@ -7,6 +7,8 @@ import { Cuenta } from '../interfaces/cuenta.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+
+    cuental: any;
     private currentCuentaSubject: BehaviorSubject<Cuenta>;
     public currentCuenta: Observable<Cuenta>;
 
@@ -27,8 +29,13 @@ export class AuthenticationService {
                     localStorage.setItem('currentCuenta', JSON.stringify(cuenta[0]));
                     this.currentCuentaSubject.next(cuenta[0]);
                 }
+                this.cuental = cuenta[0];
                 return cuenta;
             }));
+    }
+
+    cuenta() {
+        return this.cuental;
     }
 
     logout() {

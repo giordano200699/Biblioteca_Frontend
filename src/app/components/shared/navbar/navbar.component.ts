@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,18 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public location: Location, private autentificacion: AuthenticationService, 
-              private router: Router) { }
+  user: any;
+
+  constructor(public location: Location,
+              private autentificacion: AuthenticationService,
+              private usersService: UsersService,
+              private router: Router) {
+              }
 
   ngOnInit() {
   }
+
+  
   isHome() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
 
@@ -25,14 +33,28 @@ export class NavbarComponent implements OnInit {
     }
   }
   isLogin() {
+    console.log(this.user);
     if (this.autentificacion.currentCuentaValue) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
+  isAdmin() {
+    if (this.autentificacion.cuental.tipoUsuarioId > 11) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isAlumno() {
 
+    if (this.autentificacion.cuental.tipoUsuarioId < 11) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   cerrarSesion(): void {
     console.log('cerrandoSesion');
     this.autentificacion.logout();

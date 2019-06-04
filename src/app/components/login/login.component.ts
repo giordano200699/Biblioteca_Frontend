@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private autentificacion: AuthenticationService,
               private router: Router,
-              private ActivatedRouter: ActivatedRoute) { }
+              private usersService: UsersService,
+              private ActivatedRouter: ActivatedRoute) {}
 
   ngOnInit() {
   }
-
   iniciarSesion(): void {
+
     this.autentificacion.login(this.login.nombre, this.login.contrasenia).subscribe( data => {
                      console.log(data[0]);
                      if (data[0]) {

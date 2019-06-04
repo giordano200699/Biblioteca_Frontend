@@ -22,6 +22,7 @@ export class UsersService {
   // tslint:disable-next-line:no-inferrable-types
   userURL: string = 'https://bibliotecabackend.herokuapp.com/usuarios';
   tipoURL: string = 'https://bibliotecabackend.herokuapp.com/tipoUsuarios';
+  usuarioLog: any;
 
   constructor( private http: Http, private router: Router) {
     console.log('User Service Listo');
@@ -79,5 +80,10 @@ export class UsersService {
     const url = `${ this.userURL }/${ dni }?${ this.clave }`;
     return this.http.delete( url )
       .pipe(map( res => res.json()));
+  }
+
+  UsuarioLog(user) {
+    this.usuarioLog = user;
+    console.log(this.usuarioLog);
   }
 }
