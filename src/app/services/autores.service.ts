@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AutoresService {
-  autoresURL: string = 'https://bibliotecabackend.herokuapp.com/autores?' +
+  autoresURL: string = 'http://bibliotecabackend.herokuapp.com/autores?' +
                       'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
                       'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
                       'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
@@ -19,7 +19,7 @@ export class AutoresService {
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
-  autorURL: string = 'https://bibliotecabackend.herokuapp.com/autores';
+  autorURL: string = 'http://bibliotecabackend.herokuapp.com/autores';
 
   constructor(private http: Http, private router: Router) {
     console.log('Servicio autor Listo');

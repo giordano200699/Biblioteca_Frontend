@@ -14,7 +14,7 @@ export class ItemsService {
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
-  itemURL: string = 'https://bibliotecabackend.herokuapp.com/libros/items';
+  itemURL: string = 'http://bibliotecabackend.herokuapp.com/libros/items';
 
   constructor(private http: Http, private router: Router) {
     console.log('Servicio Libro Listo');

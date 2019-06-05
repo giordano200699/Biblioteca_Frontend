@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LibrosService {
-  librosURL: string = 'https://bibliotecabackend.herokuapp.com/libros?' +
+  librosURL: string = 'http://bibliotecabackend.herokuapp.com/libros?' +
                       'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
                       'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
                       'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
@@ -21,7 +21,7 @@ export class LibrosService {
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
-  libroURL: string = 'https://bibliotecabackend.herokuapp.com/libros';
+  libroURL: string = 'http://bibliotecabackend.herokuapp.com/libros';
 
   id: string;
 

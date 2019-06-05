@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UsersService {
-  usersURL: string = 'https://bibliotecabackend.herokuapp.com/usuarios?' +
+  usersURL: string = 'http://bibliotecabackend.herokuapp.com/usuarios?' +
                       'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
                       'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
                       'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
@@ -20,8 +20,8 @@ export class UsersService {
                   '6eiCuXJ3gkOfX8C4n';
 
   // tslint:disable-next-line:no-inferrable-types
-  userURL: string = 'https://bibliotecabackend.herokuapp.com/usuarios';
-  tipoURL: string = 'https://bibliotecabackend.herokuapp.com/tipoUsuarios';
+  userURL: string = 'http://bibliotecabackend.herokuapp.com/usuarios';
+  tipoURL: string = 'http://bibliotecabackend.herokuapp.com/tipoUsuarios';
 
   constructor( private http: Http, private router: Router) {
     console.log('User Service Listo');

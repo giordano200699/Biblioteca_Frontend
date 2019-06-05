@@ -8,7 +8,7 @@ import {Editorial} from '../interfaces/editorial.interface';
 @Injectable({providedIn: 'root'})
 
 export class editorialesService {
-  editorialesURL: string = 'https://bibliotecabackend.herokuapp.com/editoriales?' +
+  editorialesURL: string = 'http://bibliotecabackend.herokuapp.com/editoriales?' +
                       'Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoY' +
                       'LnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaS' +
                       'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
@@ -19,7 +19,7 @@ export class editorialesService {
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
-  editorialURL: string = 'https://bibliotecabackend.herokuapp.com/editoriales';
+  editorialURL: string = 'http://bibliotecabackend.herokuapp.com/editoriales';
 
   constructor(private http: Http, private router: Router) {
     console.log('Servicio Editorial Listo');
