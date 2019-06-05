@@ -14,10 +14,10 @@ export class PedidosService {
                   'Yc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF3' +
                   '6eiCuXJ3gkOfX8C4n';
 
-  pedidoURLSolo:string = 'https://bibliotecabackend.herokuapp.com/pedidos/activos';
-  pedidoURL: string = 'https://bibliotecabackend.herokuapp.com/pedidos';
-  pedidoURLCancelar:string = 'https://bibliotecabackend.herokuapp.com/pedidos/cancelar';
-  pedidoURLAceptar:string = 'https://bibliotecabackend.herokuapp.com/pedidos/aceptar';
+  pedidoURLSolo:string = 'http://bibliotecabackend.herokuapp.com/pedidos/activos';
+  pedidoURL: string = 'http://bibliotecabackend.herokuapp.com/pedidos';
+  pedidoURLCancelar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/cancelar';
+  pedidoURLAceptar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/aceptar';
   id: string;
 
   constructor(private http: Http, private router: Router) {
