@@ -15,7 +15,7 @@ export class PedidosService {
                   '6eiCuXJ3gkOfX8C4n';
 
   pedidoURLSolo:string = 'https://bibliotecabackend.herokuapp.com/pedidos/activos';
-
+  pedidoURL: string = 'https://bibliotecabackend.herokuapp.com/pedidos';
   pedidoURLCancelar:string = 'https://bibliotecabackend.herokuapp.com/pedidos/cancelar';
   pedidoURLAceptar:string = 'https://bibliotecabackend.herokuapp.com/pedidos/aceptar';
   id: string;
@@ -70,6 +70,18 @@ export class PedidosService {
         return res.json();
     }));
   }
-  
+
+  newPedido(pedido: Pedido) {
+    const body = JSON.stringify( pedido );
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    const url =  `${ this.pedidoURL }${ this.clave }`;
+    return this.http.post( url , body, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
 
 }
