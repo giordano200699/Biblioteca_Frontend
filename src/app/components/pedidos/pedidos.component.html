@@ -1,0 +1,70 @@
+<body class="profile-page sidebar-collapse">
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-success">
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+            </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/pedidos']">Pedidos</a>
+                                </li>
+                            </ul>
+                            <form class="form-inline ml-auto">
+                                <div class="form-group no-border">
+                                    <input type="text" name="filterName" class="form-control" placeholder="Search" [(ngModel)]="filterName">
+                                </div>
+                                <button type="submit" class="btn btn-white btn-just-icon btn-round">
+                  <i class="material-icons">search</i>
+                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <div>
+                    <h3>Bienvenido, {{nombre}}</h3>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <p>Desde aquí es posible gestionar la petición de los libros.</p>
+                            <p>Aca podras solicitar el pedido de un libro de tu interes.</p>
+                            <br>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th>ID</th>
+                                        <th>TITULO</th>
+                                        <th>DESCRIPCIÓN</th>
+                                        <th>AÑO</th>
+                                        <th>EDICIÓN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let libro of libros | keys:filterName">
+                                        <td>{{libro.libroId}}</td>
+                                        <td>{{libro.titulo}}</td>
+                                        <td>{{libro.tituloSecundario}}</td>
+                                        <td>{{libro.anio}}</td>
+                                        <td class="text-right">{{libro.edicion}}</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(libro.libroId)" class="btn btn-info btn-simple btn-xs">
+                                              <i class="fa fa-user"></i>
+                                          </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

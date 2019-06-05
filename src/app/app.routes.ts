@@ -18,6 +18,8 @@ import { AutoresComponent } from './components/autores/autores.component';
 import { AutorComponent } from './components/autores/autor.component';
 import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
 import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 import { AuthGuard } from './_guards';
 
 const APP_ROUTES: Routes = [
@@ -39,6 +41,8 @@ const APP_ROUTES: Routes = [
   { path: 'autor/:id', component: AutorComponent },
   { path: 'editar/:id', component: AutorEditComponent },
   { path: 'administrador/prestamos', component: ListaPrestamosComponent },
+  { path: 'pedidos', component: PedidosComponent },
+  { path: 'pedido/:id', component: PedidoProfileComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 

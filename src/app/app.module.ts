@@ -38,6 +38,8 @@ import { AutorComponent } from './components/autores/autor.component';
 import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.component';
 import { ItemsComponent } from './components/libros/items/items.component';
 import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 
 
 
@@ -66,7 +68,9 @@ import { ListaPrestamosComponent } from './components/Administrador/listaPrestam
     AutorComponent,
     AutorEditComponent,
     ItemsComponent,
-    ListaPrestamosComponent
+    ListaPrestamosComponent,
+    PedidosComponent,
+    PedidoProfileComponent
   ],
   imports: [
     BrowserModule,

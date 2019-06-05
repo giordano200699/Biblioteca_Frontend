@@ -10,6 +10,7 @@ export class AuthenticationService {
     private currentCuentaSubject: BehaviorSubject<Cuenta>;
     public currentCuenta: Observable<Cuenta>;
 
+
     constructor(private http: HttpClient) {
         this.currentCuentaSubject = new BehaviorSubject<Cuenta>(JSON.parse(localStorage.getItem('currentCuenta')));
         this.currentCuenta = this.currentCuentaSubject.asObservable();
@@ -18,7 +19,6 @@ export class AuthenticationService {
     public get currentCuentaValue(): Cuenta {
         return this.currentCuentaSubject.value;
     }
-
     login(nombre: string, contrasenia: string) {
         return this.http.post<any>(`https://bibliotecabackend.herokuapp.com/usuarios/esUsuario?Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n`, { nombre, contrasenia })
             .pipe(map(cuenta => {
