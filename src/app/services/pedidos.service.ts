@@ -71,17 +71,27 @@ export class PedidosService {
     }));
   }
 
-  newPedido(pedido: Pedido) {
-    const body = JSON.stringify( pedido );
+  newPedido(usuarioId, itemId,tipo) {
+    var fechaActualS = new Date();
+    fechaActualS.setTime( fechaActualS.getTime() + -5 * 60 * 60 * 1000 );
     const headers =  new  Headers({
       'Content-Type': 'application/json'
     });
-    const url =  `${ this.pedidoURL }${ this.clave }`;
-    return this.http.post( url , body, { headers } )
-        .pipe(map( res => {
-          console.log(res.json());
-          return res.json();
-        }));
+    return this.http.post( this.pedidoURL+this.clave,
+        {
+            "usuarioId": usuarioId,
+            "itemId": itemId,
+            "fechaInicio": fechaActualS.toJSON(),
+            "estado": 1,
+            "tipo": tipo
+
+        },
+        {headers}
+    )
+    .pipe(map( res => {
+        console.log(res.json());
+        return res.json();
+    }));
   }
 
 }

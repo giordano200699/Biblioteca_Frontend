@@ -40,8 +40,8 @@ const APP_ROUTES: Routes = [
   { path: 'autores', component: AutoresComponent, canActivate: [AuthGuard]},
   { path: 'autor/:id', component: AutorComponent },
   { path: 'editar/:id', component: AutorEditComponent },
-  { path: 'administrador/prestamos', component: ListaPrestamosComponent },
-  { path: 'pedidos', component: PedidosComponent },
+  { path: 'administrador/prestamos', component: ListaPrestamosComponent , canActivate: [AuthGuard]},
+  { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'pedido/:id', component: PedidoProfileComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];

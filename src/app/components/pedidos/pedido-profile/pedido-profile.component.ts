@@ -96,12 +96,9 @@ export class PedidoProfileComponent implements OnInit {
   modalBoton( item) {
     this.itemBoton = item;
   }
-  guardar( iditem, idtipo) {
-    this.pedido.usuarioId = this.dni;
-    this.pedido.itemId = iditem;
-    this.pedido.tipo = idtipo;
+  guardar( itemId, tipo) {
 
-    this.pedidosService.newPedido( this.pedido )
+    this.pedidosService.newPedido(this.autentificado.dni, itemId,tipo)
       .subscribe( data => {
       });
   }

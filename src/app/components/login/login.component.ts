@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
                      if (data[0]) {
                        if (data[0].tipoUsuarioId < 11) {
                          console.log( 'Es usuario' );
-                         this.router.navigate(['/perfil']);
+                         this.router.navigate(['/pedidos']);
                          this.isError = false;
                        } else {
                          console.log('es administrador');
-                         this.router.navigate(['/users']);
+                         this.router.navigate(['/administrador/prestamos']);
                          this.isError = false;
                        }
                      } else {
