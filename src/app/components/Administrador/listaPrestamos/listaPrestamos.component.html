@@ -32,8 +32,7 @@
                     </div>
                 </nav>
                 <div  style="padding-bottom: 30px; margin-bottom:100px;">
-                    <h3>Lista de Pedidos actuales</h3>
-                    <hr>
+                    <h3>Lista de Pedidos actuales</h3><hr>
                     <div class="panel panel-success">
                         <div class="panel-body">
                             <p>Solo usted como administrador tiene acceso a esta sección.</p>
@@ -47,17 +46,43 @@
                                         <th>Fecha del Pedido</th>
                                         <th>Item</th>
                                         <th>Aceptar</th>
-                                        <th>Rechazar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let pedido of pedidos">
                                         <td style="vertical-align: middle;">{{pedido.apellidos+' '+pedido.nombres}}</td>
                                         <td style="vertical-align: middle;">{{pedido.codigo}}</td>
-                                        <td style="vertical-align: middle;">{{pedido.fechaInicio}}</td>
+                                        <td style="vertical-align: middle;">{{imprimirFecha(pedido.fechaInicio)}}</td>
                                         <td style="vertical-align: middle;">{{pedido.itemId}}</td>
                                         <td><a class="btn btn-success" (click)="aceptar(pedido)">Aceptar</a></td>
-                                        <td><a class="btn btn-danger" (click)="rechazar(pedido)">Rechazar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h3>Lista de Préstamos actuales</h3><hr>
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th>Usuario</th>
+                                        <th>Código</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Recibir</th>
+                                        <!-- <th>Actualizar</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let prestamo of prestamos">
+                                        <td style="vertical-align: middle;">{{prestamo.apellidos+' '+prestamo.nombres}}</td>
+                                        <td style="vertical-align: middle;">{{prestamo.codigo}}</td>
+                                        <td style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaInicio)}}</td>
+                                        <td style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaFin)}}</td>
+                                        <td><a class="btn btn-success" (click)="recibir(prestamo)">Recibir</a></td>
+                                        <!-- <td><a class="btn btn-danger" (click)="actualizar(prestamo)">Actualizar</a></td> -->
                                     </tr>
                                 </tbody>
                             </table>
