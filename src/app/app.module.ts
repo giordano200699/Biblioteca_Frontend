@@ -41,6 +41,8 @@ import { ListaPrestamosComponent } from './components/Administrador/listaPrestam
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 
+import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
+
 
 
 @NgModule({
@@ -70,7 +72,8 @@ import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedi
     ItemsComponent,
     ListaPrestamosComponent,
     PedidosComponent,
-    PedidoProfileComponent
+    PedidoProfileComponent,
+    LoginFirebaseComponent
   ],
   imports: [
     BrowserModule,

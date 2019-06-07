@@ -22,8 +22,11 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 import { AuthGuard } from './_guards';
 
+import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
+
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'loginFirebase', component: LoginFirebaseComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   { path: 'user/:id', component: UserComponent },
   { path: 'profile/:dni', component: UserProfileComponent },
