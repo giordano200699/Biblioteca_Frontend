@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
       appId: "1:9115487890:web:c8dba8a2a164f4f4"
     };
     firebase.initializeApp(config);
-
+    var miClase = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        this.usuario = user;
+        miClase.usuario = user;
         var displayName = user.displayName;
         var email = user.email;
         var emailVerified = user.emailVerified;
@@ -37,11 +37,12 @@ export class HomeComponent implements OnInit {
         console.log(user)
         // User is signed in.
       } else {
-        alert("no hay");
+        alert("No hay sesión.");
         // No user is signed in.
       }
     });
   }
+  
 
   cerrarSesion(){
     if(this.usuario){
@@ -50,6 +51,8 @@ export class HomeComponent implements OnInit {
       }).catch(function(error) {
         alert("Ha ocurrido un error");
       });
+    }else{
+      alert("No hay sesión para cerrar.");
     }
   }
 
