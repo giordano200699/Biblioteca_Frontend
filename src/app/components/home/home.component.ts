@@ -9,6 +9,8 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  usuario = null;
+
   ngOnInit() {
     const config = {
       apiKey: "AIzaSyBCLQrAKuRbKK0IBAPXSGEFWAo9mzHm_04",
@@ -23,7 +25,15 @@ export class HomeComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        alert("Bienvenido "+user.displayName);
+        this.usuario = user;
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        alert("Bienvenido "+displayName);
         console.log(user)
         // User is signed in.
       } else {
@@ -31,6 +41,16 @@ export class HomeComponent implements OnInit {
         // No user is signed in.
       }
     });
+  }
+
+  cerrarSesion(){
+    if(this.usuario){
+      firebase.auth().signOut().then(function() {
+        alert("Se ha cerado la sesión");
+      }).catch(function(error) {
+        alert("Ha ocurrido un error");
+      });
+    }
   }
 
 }
