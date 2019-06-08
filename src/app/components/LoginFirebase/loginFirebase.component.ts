@@ -53,7 +53,7 @@ export class LoginFirebaseComponent implements OnInit {
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             ],
-            signInSuccessUrl: 'http://localhost:4200/home',
+            signInSuccessUrl: 'https://bibliotecafrontend.herokuapp.com/home',
             // Other config options...
         });
   }

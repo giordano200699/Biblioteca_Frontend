@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
               private ActivatedRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    window.open('http://localhost:4200/loginFirebase', 'Sign In', 'width=985,height=735');
+    window.open('https://bibliotecafrontend.herokuapp.com/loginFirebase', 'Sign In', 'width=985,height=735');
   }
 
   iniciarSesion(): void {
