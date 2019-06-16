@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { TipoUsuariosService } from '../../../services/tipoUsuarios.service';
+import * as io from 'socket.io-client';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public autentificado;
   public tipoUsuario;
   public nombre;
+  banderaPedidoRechazo = true;
 
   constructor(public location: Location, private autentificacion: AuthenticationService, 
               private router: Router) { }
@@ -21,6 +24,20 @@ export class NavbarComponent implements OnInit {
     this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
     this.tipoUsuario = this.autentificado.tipoUsuarioId;
     this.nombre = this.autentificado.nombres;
+
+    if(this.banderaPedidoRechazo){
+      var socket = io();
+      socket.on('pedido rechazado', function(msg){
+        Swal.fire({
+          title: 'Se ha rechazado tu pedido:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
+          animation: false,
+          customClass: {
+            popup: 'animated tada'
+          }
+        });
+      });
+      this.banderaPedidoRechazo = false;
+    }
   }
   isHome() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
