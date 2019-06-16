@@ -33,6 +33,7 @@ export class ListaPrestamosComponent implements OnInit {
       });
   }
   ngOnInit() {
+    const funcionPedidos = this.pedidosService;
     if(this.contador==1){
       var socket = io();
       socket.on('pedido creado', function(msg){
@@ -43,7 +44,7 @@ export class ListaPrestamosComponent implements OnInit {
             popup: 'animated tada'
           }
         }).then((result)=>{
-          this.pedidosService.getPedidos().subscribe( data => {
+          funcionPedidos.getPedidos().subscribe( data => {
             this.pedidos = data;
           });
         });
