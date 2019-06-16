@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   public tipoUsuario;
   public nombre;
   banderaPedidoRechazo = true;
+  banderaPedidoAceptado = true;
 
   constructor(public location: Location, private autentificacion: AuthenticationService, 
               private router: Router) { }
@@ -40,6 +41,22 @@ export class NavbarComponent implements OnInit {
         }
       });
       this.banderaPedidoRechazo = false;
+    }
+
+    if(this.banderaPedidoAceptado){
+      var socket = io();
+      socket.on('pedido aceptado', function(msg){
+        if(msg.usuarioId == mithis.autentificado.dni){
+          Swal.fire({
+            title: 'Se ha aceptado tu pedido:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
+            animation: false,
+            customClass: {
+              popup: 'animated tada'
+            }
+          });
+        }
+      });
+      this.banderaPedidoAceptado = false;
     }
   }
   isHome() {
