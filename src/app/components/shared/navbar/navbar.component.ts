@@ -24,11 +24,12 @@ export class NavbarComponent implements OnInit {
     this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
     this.tipoUsuario = this.autentificado.tipoUsuarioId;
     this.nombre = this.autentificado.nombres;
+    var mithis = this;
 
     if(this.banderaPedidoRechazo){
       var socket = io();
       socket.on('pedido rechazado', function(msg){
-        if(msg.usuarioId == this.autentificado.dni){
+        if(msg.usuarioId == mithis.autentificado.dni){
           Swal.fire({
             title: 'Se ha rechazado tu pedido:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
             animation: false,
