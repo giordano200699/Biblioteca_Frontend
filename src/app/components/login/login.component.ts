@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, 
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Cuenta } from '../../interfaces/cuenta.interface';
+import * as io from 'socket.io-client';
 
 var firebase = require('firebase');
 var firebaseui = require('firebaseui');
@@ -29,6 +30,10 @@ export class LoginComponent implements OnInit {
  
   ngOnInit() {
     //window.open('https://bibliotecafrontend.herokuapp.com/loginFirebase', 'Sign In', 'width=985,height=735');
+    var socket = io();
+    socket.on('some event', function(msg){
+      alert(msg.for);
+    });
     const config = {
       apiKey: "AIzaSyBCLQrAKuRbKK0IBAPXSGEFWAo9mzHm_04",
       authDomain: "biblioteca-957c1.firebaseapp.com",
