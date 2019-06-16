@@ -68,10 +68,16 @@ export class LibrosComponent implements OnInit {
     this.router.navigate(['/edit', this.idLibro]);
   }
 
+  mostrarTemas(id: number) {
+    this.idLibro = id.toString();
+    this.router.navigate(['/administrador/libros/temas', this.idLibro]);
+  }
+
   mostrarLibro(id: number) {
     this.idLibro = id.toString();
     this.router.navigate(['/profil', this.idLibro]);
   }
+
   modalBoton(libro) {
     this.libroBoton = libro;
   }

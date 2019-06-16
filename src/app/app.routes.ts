@@ -20,6 +20,7 @@ import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.c
 import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
+import { LibrosTemasComponent } from './components/Administrador/librosTemas/librosTemas.component';
 import { AuthGuard } from './_guards';
 
 import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
@@ -44,6 +45,7 @@ const APP_ROUTES: Routes = [
   { path: 'autor/:id', component: AutorComponent },
   { path: 'editar/:id', component: AutorEditComponent },
   { path: 'administrador/prestamos', component: ListaPrestamosComponent , canActivate: [AuthGuard]},
+  { path: 'administrador/libros/temas/:id', component: LibrosTemasComponent , canActivate: [AuthGuard]},
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'pedido/:id', component: PedidoProfileComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
