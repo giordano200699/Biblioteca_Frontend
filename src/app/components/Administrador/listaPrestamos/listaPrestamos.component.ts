@@ -34,6 +34,7 @@ export class ListaPrestamosComponent implements OnInit {
   }
   ngOnInit() {
     const funcionPedidos = this.pedidosService;
+    var mithis = this;
     if(this.contador==1){
       var socket = io();
       socket.on('pedido creado', function(msg){
@@ -45,7 +46,7 @@ export class ListaPrestamosComponent implements OnInit {
           }
         }).then((result)=>{
           funcionPedidos.getPedidos().subscribe( data => {
-            this.pedidos = data;
+            mithis.pedidos = data;
           });
         });
       
