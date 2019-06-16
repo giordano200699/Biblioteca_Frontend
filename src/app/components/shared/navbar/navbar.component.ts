@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   public nombre;
   banderaPedidoRechazo = true;
   banderaPedidoAceptado = true;
+  banderaPrestamoRecibido = true;
 
   constructor(public location: Location, private autentificacion: AuthenticationService, 
               private router: Router) { }
@@ -57,6 +58,22 @@ export class NavbarComponent implements OnInit {
         }
       });
       this.banderaPedidoAceptado = false;
+    }
+
+    if(this.banderaPrestamoRecibido){
+      var socket = io();
+      socket.on('prestamo finalizado', function(msg){
+        if(msg.usuarioId == mithis.autentificado.dni){
+          Swal.fire({
+            title: 'Tu préstamo ha sido finalizado:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
+            animation: false,
+            customClass: {
+              popup: 'animated tada'
+            }
+          });
+        }
+      });
+      this.banderaPrestamoRecibido = false;
     }
   }
   isHome() {
