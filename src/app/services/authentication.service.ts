@@ -31,6 +31,20 @@ export class AuthenticationService {
             }));
     }
 
+    loginGoogle(nombre: string, idGoogle: string) {
+        return this.http.post<any>(`http://bibliotecabackend.herokuapp.com/usuarios/esUsuarioGoogle?Content-Type=application/json&clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n`,
+         { nombre, idGoogle })
+            .pipe(map(cuenta => {
+                // login successful if there's a jwt token in the response
+                if (cuenta && cuenta[0] && cuenta[0]._id) {
+                    localStorage.setItem('currentCuenta', JSON.stringify(cuenta[0]));
+                    this.currentCuentaSubject.next(cuenta[0]);
+                }
+                return cuenta;
+            }));
+    }
+
+
     logout() {
         localStorage.removeItem('currentCuenta');
         this.currentCuentaSubject.next(null);

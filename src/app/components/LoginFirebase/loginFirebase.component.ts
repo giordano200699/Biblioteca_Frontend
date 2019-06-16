@@ -53,6 +53,20 @@ export class LoginFirebaseComponent implements OnInit {
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             ],
+            callbacks: {
+              signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                // User successfully signed in.
+                // Return type determines whether we continue the redirect automatically
+                // or whether we leave that to developer to handle.
+                document.getElementById('loader').style.display = 'false';
+                return true;
+              },
+              uiShown: function() {
+                // The widget is rendered.
+                // Hide the loader.
+                document.getElementById('loader').style.display = 'none';
+              }
+            },
             signInSuccessUrl: 'https://bibliotecafrontend.herokuapp.com/home',
             // Other config options...
         });
