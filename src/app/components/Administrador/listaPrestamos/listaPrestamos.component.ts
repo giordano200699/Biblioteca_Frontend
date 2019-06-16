@@ -43,7 +43,6 @@ export class ListaPrestamosComponent implements OnInit {
             popup: 'animated tada'
           }
         }).then((result)=>{
-          alert("se termino el modal");
           this.pedidosService.getPedidos().subscribe( data => {
             this.pedidos = data;
           });
