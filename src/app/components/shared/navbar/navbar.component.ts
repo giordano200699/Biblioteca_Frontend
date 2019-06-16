@@ -28,13 +28,15 @@ export class NavbarComponent implements OnInit {
     if(this.banderaPedidoRechazo){
       var socket = io();
       socket.on('pedido rechazado', function(msg){
-        Swal.fire({
-          title: 'Se ha rechazado tu pedido:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
-          animation: false,
-          customClass: {
-            popup: 'animated tada'
-          }
-        });
+        if(msg.usuarioId == this.autentificado.dni){
+          Swal.fire({
+            title: 'Se ha rechazado tu pedido:\nTítulo: '+msg.titulo+'\nNº Ejemplar: '+msg.numeroCopia,
+            animation: false,
+            customClass: {
+              popup: 'animated tada'
+            }
+          });
+        }
       });
       this.banderaPedidoRechazo = false;
     }
