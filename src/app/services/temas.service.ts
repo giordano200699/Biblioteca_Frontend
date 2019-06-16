@@ -16,6 +16,7 @@ export class TemasService {
 
   // tslint:disable-next-line:no-inferrable-types
   temasLibrosURL: string = 'http://bibliotecabackend.herokuapp.com/temas/libros';
+  temasActualizarURL: string = 'http://bibliotecabackend.herokuapp.com/temas/relacionarLibro'
 
   constructor( private http: Http, private router: Router) {
     console.log('Servicio de Temas Listo');
@@ -25,5 +26,24 @@ export class TemasService {
   obtenerRelacionesConLibro(id:number) {
     return this.http.get(this.temasLibrosURL+'/'+id+this.clave)
         .pipe(map( res => res.json()));
+  }
+
+  actualizarRelacionesConLibro(idLibro, arreglo){
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.put( this.temasActualizarURL+this.clave,
+        {
+            libroId:idLibro,
+            temas:arreglo
+
+        },
+        {headers}
+    )
+    .pipe(map( res => {
+        console.log(res.json());
+        return res.json();
+    }));
   }
 }

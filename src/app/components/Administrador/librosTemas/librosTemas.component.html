@@ -48,10 +48,10 @@
                             <button type="button" class="btn btn-info"  (click)="agregarTema()">
                                 Agregar Tema
                             </button>
-                            <button type="button" class="btn btn-info"  (click)="eliminarTema()">
+                            <button type="button" class="btn btn-info" [disabled]="!banderaTemas" (click)="eliminarTema()">
                                 Eliminar Tema
                             </button>
-                            <button type="button" class="btn btn-info"  (click)="guardarCambios()">
+                            <button type="button" class="btn btn-info" [disabled]="!banderaTemas" (click)="guardarCambios()">
                                     Guardar Cambios
                             </button>
                         </div>

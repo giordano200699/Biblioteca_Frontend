@@ -40,12 +40,14 @@ export class LibrosTemasComponent implements OnInit {
         if(data.length==0){
             mithis.banderaTemas = false;
         }else{
+          console.log(data);
             mithis.temas = data.temas;
         }
     });
   }
 
   agregarTema(){
+    this.banderaTemas = true;
       this.temas.push({
           nombre:'',
           peso:0
@@ -55,7 +57,29 @@ export class LibrosTemasComponent implements OnInit {
     this.temas.pop();
     }
     guardarCambios(){
-        alert("Guardar Cambios");
+      var bandera = true;
+      for(let tema of this.temas){
+        if(tema.nombre.length==0 || tema.peso.length==0){
+          bandera = false;
+        }
+      }
+      if(bandera){
+        this.temasService.actualizarRelacionesConLibro(parseInt(this.idLibro),this.temas)
+        .subscribe(data => {
+          console.log(data)
+          Swal.fire({
+            type: 'success',
+            title: 'Tarea realizada',
+            text: 'Se han guardado los cambios.'
+          })
+      });
+      }else{
+        Swal.fire({
+          type: 'error',
+          title: 'Datos erróneos',
+          text: 'Usted debe llenar todos los campos, y el peso debe ser un número entero.'
+        })
+      }
     }
 
 
