@@ -6,6 +6,7 @@ import { PedidosService} from '../../../services/pedidos.service';
 import { PrestamosService} from '../../../services/prestamos.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import * as io from 'socket.io-client';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-listaPrestamos',
@@ -35,7 +36,19 @@ export class ListaPrestamosComponent implements OnInit {
     if(this.contador==1){
       var socket = io();
       socket.on('pedido creado', function(msg){
-        alert(msg.pedidoId);
+        Swal.fire({
+          title: 'Se ha pedido el pedido '+msg.pedidoId,
+          animation: false,
+          customClass: {
+            popup: 'animated tada'
+          }
+        }).then((result)=>{
+          alert("se termino el modal");
+          this.pedidosService.getPedidos().subscribe( data => {
+            this.pedidos = data;
+          });
+        });
+      
       });
       this.contador++;
     }
