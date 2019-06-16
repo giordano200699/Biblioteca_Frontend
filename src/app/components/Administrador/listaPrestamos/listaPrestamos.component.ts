@@ -5,6 +5,7 @@ import { Pedido } from '../../../interfaces/pedido.interface';
 import { PedidosService} from '../../../services/pedidos.service';
 import { PrestamosService} from '../../../services/prestamos.service';
 import { AuthenticationService } from '../../../services/authentication.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-listaPrestamos',
@@ -16,6 +17,7 @@ export class ListaPrestamosComponent implements OnInit {
   pedidos:[];
   prestamos:[];
   public autentificado;
+  contador=1;
 
   constructor(private autentificacion: AuthenticationService,
     private pedidosService: PedidosService,
@@ -30,6 +32,13 @@ export class ListaPrestamosComponent implements OnInit {
       });
   }
   ngOnInit() {
+    if(this.contador==1){
+      var socket = io();
+      socket.on('pedido creado', function(msg){
+        alert(msg.pedidoId);
+      });
+      this.contador++;
+    }
   }
 
   imprimirFecha(cadena){
