@@ -39,7 +39,7 @@ export class ListaPrestamosComponent implements OnInit {
       var socket = io();
       socket.on('pedido creado', function(msg){
         Swal.fire({
-          title: 'Se ha pedido el pedido '+msg.pedidoId,
+          title: 'Se ha pedido el libro '+msg.titulo+' ejemplar Nº'+msg.numeroCopia,
           animation: false,
           customClass: {
             popup: 'animated tada'
