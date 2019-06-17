@@ -21,6 +21,7 @@ import { ListaPrestamosComponent } from './components/Administrador/listaPrestam
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 import { LibrosTemasComponent } from './components/Administrador/librosTemas/librosTemas.component';
+import { EstadisticasComponent } from './components/Administrador/estadisticas/estadisticas.component';
 import { AuthGuard } from './_guards';
 
 import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
@@ -46,6 +47,7 @@ const APP_ROUTES: Routes = [
   { path: 'editar/:id', component: AutorEditComponent },
   { path: 'administrador/prestamos', component: ListaPrestamosComponent , canActivate: [AuthGuard]},
   { path: 'administrador/libros/temas/:id', component: LibrosTemasComponent , canActivate: [AuthGuard]},
+  { path: 'administrador/estadisticas', component: EstadisticasComponent , canActivate: [AuthGuard]},
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'pedido/:id', component: PedidoProfileComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }

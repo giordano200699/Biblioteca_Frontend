@@ -39,10 +39,12 @@ import { AutorEditComponent } from './components/autores/autor-edit/autor-edit.c
 import { ItemsComponent } from './components/libros/items/items.component';
 import { ListaPrestamosComponent } from './components/Administrador/listaPrestamos/listaPrestamos.component';
 import { LibrosTemasComponent } from './components/Administrador/librosTemas/librosTemas.component';
+import { EstadisticasComponent } from './components/Administrador/estadisticas/estadisticas.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 
 import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 
@@ -75,13 +77,15 @@ import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase
     LibrosTemasComponent,
     PedidosComponent,
     PedidoProfileComponent,
-    LoginFirebaseComponent
+    LoginFirebaseComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     HttpModule,
+    GoogleChartsModule,
     APP_ROUTING
   ],
   providers: [

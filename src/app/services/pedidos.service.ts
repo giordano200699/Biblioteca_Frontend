@@ -18,6 +18,7 @@ export class PedidosService {
   pedidoURL: string = 'http://bibliotecabackend.herokuapp.com/pedidos';
   pedidoURLCancelar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/cancelar';
   pedidoURLAceptar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/aceptar';
+  estadisticaURL: string = 'http://bibliotecabackend.herokuapp.com/pedidos/estadistica';
   id: string;
 
   constructor(private http: Http, private router: Router) {
@@ -85,6 +86,22 @@ export class PedidosService {
             "estado": 1,
             "tipo": tipo
 
+        },
+        {headers}
+    )
+    .pipe(map( res => {
+        console.log(res.json());
+        return res.json();
+    }));
+  }
+
+  obtenerEstadistica(){
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post( this.estadisticaURL+this.clave,
+        {
         },
         {headers}
     )

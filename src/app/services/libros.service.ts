@@ -22,6 +22,7 @@ export class LibrosService {
                   '6eiCuXJ3gkOfX8C4n';
 
   libroURL: string = 'http://bibliotecabackend.herokuapp.com/libros';
+  estadisticaURL: string = 'http://bibliotecabackend.herokuapp.com/libros/estadistica';
 
   id: string;
 
@@ -115,5 +116,20 @@ export class LibrosService {
     const url =  `${ this.libroURL }/${ id }?${ this.clave }`;
     return this.http.delete( url )
       .pipe(map( res => res.json()));
+  }
+
+  obtenerEstadistica(){
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post( this.estadisticaURL+'?'+this.clave,
+        {
+        },
+        {headers}
+    )
+    .pipe(map( res => {
+        console.log(res.json());
+        return res.json();
+    }));
   }
 }

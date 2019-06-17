@@ -18,6 +18,7 @@ export class PrestamosService {
   pedidoURLCrear:string = 'http://bibliotecabackend.herokuapp.com/prestamos';
   pedidoURLObtener:string = 'http://bibliotecabackend.herokuapp.com/prestamos/activos';
   pedidoURLRecibir:string = 'http://bibliotecabackend.herokuapp.com/prestamos/recibir';
+  estadisticaURL:string = 'http://bibliotecabackend.herokuapp.com/prestamos/estadistica';
   id: string;
 
   constructor(private http: Http, private router: Router) {
@@ -61,6 +62,22 @@ export class PrestamosService {
             fechaDevolucion:fechaDevolucion,
             estado:2,
             adminId: adminId
+        },
+        {headers}
+    )
+    .pipe(map( res => {
+        console.log(res.json());
+        return res.json();
+    }));
+  }
+
+  obtenerEstadistica(){
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post( this.estadisticaURL+this.clave,
+        {
         },
         {headers}
     )
