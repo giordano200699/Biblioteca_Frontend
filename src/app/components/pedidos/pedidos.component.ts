@@ -13,6 +13,9 @@ export class PedidosComponent implements OnInit {
   public autentificado;
   public nombre;
   libros: any[] = [];
+  lib: any[] = [];
+  aux: any[] = [];
+  pag: number = 1;
   idLibro: string;
   filterName = '';
 
@@ -30,9 +33,26 @@ export class PedidosComponent implements OnInit {
     this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
     this.nombre = this.autentificado.nombres;
   }
-
   mostrarLibro(id: number) {
     this.idLibro = id.toString();
     this.router.navigate(['/pedido', this.idLibro]);
+  }
+
+  filtro() {
+    this.vaciar();
+    if (this.filterName === '' || this.filterName.length < 3) {
+      return;
+    }
+    for (const libro of this.libros) {
+      if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
+        this.lib.push(libro);
+      }
+    }
+  }
+
+  vaciar() {
+    while (this.lib.length > 0) {
+      this.lib.pop();
+    }
   }
 }

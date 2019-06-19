@@ -42,9 +42,14 @@ import { LibrosTemasComponent } from './components/Administrador/librosTemas/lib
 import { EstadisticasComponent } from './components/Administrador/estadisticas/estadisticas.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
+import { SolicitadosComponent } from './components/pedidos/solicitados/solicitados.component';
+import { PrestamosComponent } from './components/pedidos/prestamos/prestamos.component';
 
 import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HistorialComponent } from './components/pedidos/prestamos/historial/historial.component';
+
 
 
 
@@ -78,7 +83,10 @@ import { GoogleChartsModule } from 'angular-google-charts';
     PedidosComponent,
     PedidoProfileComponent,
     LoginFirebaseComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
+    SolicitadosComponent,
+    PrestamosComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +94,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     HttpClientModule,
     HttpModule,
     GoogleChartsModule,
+    NgxPaginationModule,
     APP_ROUTING
   ],
   providers: [

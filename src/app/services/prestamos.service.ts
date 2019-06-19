@@ -18,6 +18,7 @@ export class PrestamosService {
   pedidoURLCrear:string = 'http://bibliotecabackend.herokuapp.com/prestamos';
   pedidoURLObtener:string = 'http://bibliotecabackend.herokuapp.com/prestamos/activos';
   pedidoURLRecibir:string = 'http://bibliotecabackend.herokuapp.com/prestamos/recibir';
+  prestamosUsuario:string = 'http://bibliotecabackend.herokuapp.com/prestamos/usuario/';
   estadisticaURL:string = 'http://bibliotecabackend.herokuapp.com/prestamos/estadistica';
   id: string;
 
@@ -27,6 +28,12 @@ export class PrestamosService {
 
   getPrestamos() {
     return this.http.get(this.pedidoURLObtener+this.clave)
+        .pipe(map( res => res.json()));
+  }
+
+  traerPrestamos(id) {
+    console.log(this.prestamosUsuario+id+this.clave);
+    return this.http.get(this.prestamosUsuario+id+this.clave)
         .pipe(map( res => res.json()));
   }
 

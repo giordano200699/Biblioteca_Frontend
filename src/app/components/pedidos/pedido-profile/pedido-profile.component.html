@@ -18,6 +18,10 @@
                                         <td>{{l.titulo}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Autor</th>
+                                        <td>{{autor}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Titulo Secundario</th>
                                         <td>{{l.tituloSecundario}}</td>
                                     </tr>
@@ -32,6 +36,10 @@
                                     <tr>
                                         <th>Edición</th>
                                         <td>{{l.edicion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Editorial</th>
+                                        <td>{{editorial}}</td>
                                     </tr>
                                     <tr>
                                         <th>Resumen</th>
@@ -54,16 +62,8 @@
                                         <td>{{l.observaciones}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Dimensiones</th>
-                                        <td>{{l.dimensiones}}</td>
-                                    </tr>
-                                    <tr>
                                         <th>Acompañamiento</th>
                                         <td>{{l.acompanamiento}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Palabras Claves</th>
-                                        <td>{{l.palabrasClaves}}</td>
                                     </tr>
                                     <tr>
                                         <th>Tomo</th>
@@ -89,25 +89,52 @@
                         <thead>
                             <tr class="success">
                                 <th>N° COPIA</th>
-                                <th>N° INGRESO</th>
                                 <th>COD. BARRA</th>
                                 <th>DISP.</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of items">
+                            <tr *ngFor="let item of items | paginate: {itemsPerPage: 5, currentPage: p}">
                                 <td>{{item.numeroCopia}}</td>
-                                <td>{{item.numeroIngreso}}</td>
                                 <td>{{item.codigoBarra}}</td>
-                                <td>{{item.disponibilidad}}</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="Ver Item" class="btn btn-info btn-simple btn-xs" style='width:50px; height:50px' data-toggle="modal" data-target="#viewModal" (click)="modalBoton(item)">
-                                      <i class="material-icons">bookmark</i>
-                                  </button>
+                                <td>
+                                    <div [ngSwitch]="item.disponibilidad">
+                                        <div *ngSwitchCase="1">
+                                            Disponible
+                                        </div>
+                                        <div *ngSwitchCase="0">
+                                            No Disponible
+                                        </div>
+                                        <div *ngSwitchDefault>
+                                            No Disponible
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div [ngSwitch]="item.disponibilidad">
+                                        <div *ngSwitchCase="1">
+                                            <button type="button" rel="tooltip" title="Solicitar Item" class="btn btn-success btn-simple btn-xs" data-toggle="modal" data-target="#viewModal" (click)="modalBoton(item)">
+                                                SOLICITAR
+                                            </button>
+                                        </div>
+                                        <div *ngSwitchCase="0">
+                                            <button type="button" rel="tooltip" title="Solicitar Item" disabled="true" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#viewModal" (click)="modalBoton(item)">
+                                                SOLICITAR
+                                            </button>
+                                        </div>
+                                        <div *ngSwitchDefault>
+                                            <button type="button" rel="tooltip" title="Solicitar Item" disabled="true" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#viewModal" (click)="modalBoton(item)">
+                                                SOLICITAR
+                                            </button>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+                    <br>
                 </div>
             </div>
         </div>
@@ -120,73 +147,20 @@
                     <div class="modal-header">
                         <div class="card-header card-header-primary text-center ">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                              <i class="material-icons">clear</i>
-                          </button>
+                                <i class="material-icons">clear</i>
+                            </button>
                             <h4 class="card-title">DATOS DEL ITEM</h4>
                         </div>
                     </div>
                     <div class="modal-body">
-                        <fieldset>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th>Numero de Ingreso</th>
-                                        <td>{{itemBoton.numeroIngreso}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Codigo de barra</th>
-                                        <td>{{itemBoton.codigoBarra}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Número de copia</th>
-                                        <td>{{itemBoton.numeroCopia}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Volumen</th>
-                                        <td>{{itemBoton.volumen}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fuente Adquisición</th>
-                                        <td>{{itemBoton.fuenteAdquisicion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Modo Adquisición</th>
-                                        <td>{{itemBoton.modoAdquisicion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Precio Adquisición</th>
-                                        <td>{{itemBoton.precioAdquisicion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fecha Adquisición</th>
-                                        <td>{{itemBoton.fechaAdquisicion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Disponibilidad</th>
-                                        <td>{{itemBoton.disponibilidad}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tipo Impresion</th>
-                                        <td>{{itemBoton.tipoImpresion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Lugar Publicación</th>
-                                        <td>{{itemBoton.lugarPublicacion}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Stand</th>
-                                        <td>{{itemBoton.standId}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </fieldset>
+
                         <p>Desea pedir el libro para:</p>
-                        <button type="button" class="btn btn-danger" (click)="guardar(itemBoton.itemId,0)" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
-                          Casa <i class="material-icons">home</i>
-                      </button>
-                        <button type="submit" class="btn btn-success" (click)="guardar(itemBoton.itemId,1)" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
-                          Sala <i class="material-icons">chrome_reader_mode</i>
-                      </button>
+                        <button type="button" class="btn btn-danger btn-simple btn-xs" (click)="guardar(itemBoton.itemId,0)" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
+                            Casa <i class="material-icons">home</i>
+                        </button>
+                        <button type="submit" class="btn btn-success btn-simple btn-xs" (click)="guardar(itemBoton.itemId,1)" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">
+                            Sala <i class="material-icons">chrome_reader_mode</i>
+                        </button>
 
                     </div>
                 </div>
@@ -200,7 +174,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">PETICION DE LIBRO</h5>
                 </div>
                 <div class="modal-body">
-                    SU PEDIDO SE HA REALIZADO CON ÉXITO!! ESPERE SU APROBACIÓN.
+                    Su pedido se ha realizado con éxito. Espere su aprobación.
                 </div>
                 <div class="modal-footer">
                     <button [routerLink]="['/pedidos']" type="button" data-dismiss="modal" class="btn btn-primary" data-dismiss="modal">Aceptar</button>

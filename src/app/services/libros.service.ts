@@ -22,6 +22,7 @@ export class LibrosService {
                   '6eiCuXJ3gkOfX8C4n';
 
   libroURL: string = 'http://bibliotecabackend.herokuapp.com/libros';
+  todoLibroURL: string = 'https://bibliotecabackend.herokuapp.com/libros/todo';
   estadisticaURL: string = 'http://bibliotecabackend.herokuapp.com/libros/estadistica';
 
   id: string;
@@ -61,6 +62,13 @@ export class LibrosService {
   getLibros() {
 
     return this.http.get(this.librosURL)
+        .pipe(map( res => res.json()));
+  }
+
+  getTodoLibros(id: string) {
+    const url = `${ this.todoLibroURL }/${ id }?${ this.clave }`;
+    console.log(url);
+    return this.http.get(url)
         .pipe(map( res => res.json()));
   }
 

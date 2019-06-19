@@ -6,24 +6,35 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-success">
                     <div class="container">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-            </button>
+                        <p class="navbar-brand">Prestamos</p>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
+                            <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" [routerLink]="['/pedidos']">Pedidos</a>
+                                    <a class="nav-link" [routerLink]="['/pedidos']">Solicitar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/solicitados']">Solicitados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/prestamos']">Prestamos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/historial']">Historial</a>
                                 </li>
                             </ul>
                             <form class="form-inline ml-auto">
                                 <div class="form-group no-border">
                                     <input type="text" name="filterName" class="form-control" placeholder="Search" [(ngModel)]="filterName">
                                 </div>
-                                <button type="submit" class="btn btn-white btn-just-icon btn-round">
-                  <i class="material-icons">search</i>
-                </button>
+                                <button (click)="filtro()" type="submit" class="btn btn-white btn-just-icon btn-round">
+                                    <i class="material-icons">search</i>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -47,20 +58,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let libro of libros | keys:filterName">
-                                        <td>{{libro.libroId}}</td>
-                                        <td>{{libro.titulo}}</td>
-                                        <td>{{libro.tituloSecundario}}</td>
-                                        <td>{{libro.anio}}</td>
-                                        <td class="text-right">{{libro.edicion}}</td>
+                                    <tr *ngFor="let li of lib | paginate: {itemsPerPage: 5, currentPage: pag}">
+                                        <td>{{li.libroId}}</td>
+                                        <td>{{li.titulo}}</td>
+                                        <td>NOMBRE AUTOR</td>
+                                        <td>{{li.tituloSecundario}}</td>
+                                        <td class="text-right">{{li.edicion}}</td>
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(libro.libroId)" class="btn btn-info btn-simple btn-xs">
-                                              <i class="fa fa-user"></i>
-                                          </button>
+                                            <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(li.libroId)" class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-user"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <br>
+                            <pagination-controls class="text-center" (pageChange)="pag = $event"></pagination-controls>
+                            <br>
                         </div>
                     </div>
                 </div>

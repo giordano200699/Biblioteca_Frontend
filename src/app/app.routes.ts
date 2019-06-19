@@ -22,9 +22,12 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidoProfileComponent } from './components/pedidos/pedido-profile/pedido-profile.component';
 import { LibrosTemasComponent } from './components/Administrador/librosTemas/librosTemas.component';
 import { EstadisticasComponent } from './components/Administrador/estadisticas/estadisticas.component';
+import { SolicitadosComponent } from './components/pedidos/solicitados/solicitados.component';
+import { PrestamosComponent } from './components/pedidos/prestamos/prestamos.component';
 import { AuthGuard } from './_guards';
 
 import { LoginFirebaseComponent } from './components/LoginFirebase/loginFirebase.component';
+import { HistorialComponent } from './components/pedidos/prestamos/historial/historial.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -49,6 +52,9 @@ const APP_ROUTES: Routes = [
   { path: 'administrador/libros/temas/:id', component: LibrosTemasComponent , canActivate: [AuthGuard]},
   { path: 'administrador/estadisticas', component: EstadisticasComponent , canActivate: [AuthGuard]},
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
+  { path: 'prestamos', component: PrestamosComponent, canActivate: [AuthGuard] },
+  { path: 'solicitados', component: SolicitadosComponent, canActivate: [AuthGuard] },
+  { path: 'historial', component: HistorialComponent, canActivate: [AuthGuard] },
   { path: 'pedido/:id', component: PedidoProfileComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];

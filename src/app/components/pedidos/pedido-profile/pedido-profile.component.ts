@@ -16,7 +16,12 @@ export class PedidoProfileComponent implements OnInit {
 
   public autentificado;
   public dni;
+  todolibro: any[] = [];
   libro: any[] = [];
+  aux: any[] = [];
+  autor;
+  editorial;
+  idLibro;
   items: any[] = [];
   itemBoton: Item = {
     numeroIngreso: '',
@@ -34,7 +39,6 @@ export class PedidoProfileComponent implements OnInit {
     itemId: null,
     libroId: null
   };
-  idLibro;
   item: Item = {
     numeroIngreso: '',
     codigoBarra: '',
@@ -69,12 +73,11 @@ export class PedidoProfileComponent implements OnInit {
 
         this.activatedRoute.params.subscribe( params => {
           this.idLibro = params['id'];
-          console.log(this.idLibro);
           this.getLibro( params['id'] );
-          console.log('aca');
           this.itemsService.getItems( params['id']  )
           .subscribe(data => {
               this.items = data;
+              console.log(this.items);
           });
         });
   }
@@ -85,11 +88,19 @@ export class PedidoProfileComponent implements OnInit {
   }
 
   getLibro( id: string ) {
-
     this.librosService.getLibro( id )
     .subscribe( libro => {
-      console.log(libro);
       this.libro = libro;
+    });
+
+    this.librosService.getTodoLibros( id )
+    .subscribe( todolibro => {
+      this.todolibro = todolibro;
+      console.log(this.todolibro);
+      this.aux = this.todolibro['autores'];
+      this.autor = this.aux[0].nombre;
+      this.aux = this.todolibro['editoriales'];
+      this.editorial = this.aux[0].nombre;
     });
   }
 
@@ -98,7 +109,7 @@ export class PedidoProfileComponent implements OnInit {
   }
   guardar( itemId, tipo) {
 
-    this.pedidosService.newPedido(this.autentificado.dni, itemId,tipo)
+    this.pedidosService.newPedido(this.autentificado.dni, itemId, tipo)
       .subscribe( data => {
       });
   }

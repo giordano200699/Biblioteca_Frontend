@@ -1,0 +1,67 @@
+<body class="profile-page sidebar-collapse">
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-success">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <h5 class="navbar-brand">Prestamos</h5>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/pedidos']">Solicitar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/solicitados']">Solicitados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/prestamos']">Prestamos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/historial']">Historial</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div>
+                    <h3>Bienvenido, {{nombre}}</h3>
+                    <hr>
+                    <div class="panel panel-success">
+                        <div class="panel-body">
+                            <p>Desde aquí es posible acceder a tus prestamos vigentes.</p>
+                            <p>Aca podras acceder a la relación de libros que te has prestado asi como tambien</p>
+                            <p>la fecha de entrega del material bibliográfico.</p>
+                            <br>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr class="success">
+                                        <th>ID</th>
+                                        <th>LIBRO</th>
+                                        <th>ITEM</th>
+                                        <th>FECHA DE PRESTAMO</th>
+                                        <th>FECHA DE ENTREGA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ped of prestamosUsuario | paginate: {itemsPerPage: 5, currentPage: p}">
+                                        <td>{{ped.pedidoId}}</td>
+                                        <td>{{ped.titulo}}</td>
+                                        <td>{{ped.codigoBarra}}</td>
+                                        <td>{{imprimirFecha(ped.fechaInicio)}}</td>
+                                        <td>{{imprimirFecha(ped.fechaFin)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
