@@ -12,6 +12,9 @@ export class AutoresComponent implements OnInit {
   autores: Autor[] = [];
   autorBoton;
   idAutor: string;
+  filterName = '';
+  auto: any[] = [];
+  pag: number = 1;
 
   constructor(private autoresService: AutoresService,
               private router: Router) {
@@ -19,6 +22,7 @@ export class AutoresComponent implements OnInit {
     this.autoresService.getAutores()
         .subscribe( data => {
           this.autores = data;
+          this.auto = data;
         });
   }
 
@@ -47,6 +51,24 @@ export class AutoresComponent implements OnInit {
   }*/
   modalBoton(autor) {
     this.autorBoton = autor;
+  }
+
+  filtro() {
+    this.vaciar();
+    if (this.filterName === '' || this.filterName.length < 3) {
+      return;
+    }
+    for (const autor of this.autores) {
+      if (autor.nombre.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
+        this.auto.push(autor);
+      }
+    }
+  }
+
+  vaciar() {
+    while (this.auto.length > 0) {
+      this.auto.pop();
+    }
   }
 }
 

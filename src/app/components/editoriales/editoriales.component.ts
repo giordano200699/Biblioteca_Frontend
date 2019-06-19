@@ -12,6 +12,9 @@ export class EditorialesComponent implements OnInit {
   editoriales: any[] = [];
   editorialBoton;
   idEditorial: string;
+  filterName = '';
+  edito: any[] = [];
+  pag: number = 1;
 
   constructor(private editorialesServic: editorialesService,
               private router: Router) {
@@ -19,6 +22,7 @@ export class EditorialesComponent implements OnInit {
     this.editorialesServic.getEditoriales()
     .subscribe( data => {
       this.editoriales = data;
+      this.edito = data;
     });
   }
 
@@ -47,5 +51,23 @@ export class EditorialesComponent implements OnInit {
   }
   modalBoton(libro) {
     this.editorialBoton = libro;
+  }
+
+  filtro() {
+    this.vaciar();
+    if (this.filterName === '' || this.filterName.length < 3) {
+      return;
+    }
+    for (const editorial of this.editoriales) {
+      if (editorial.nombre.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
+        this.edito.push(editorial);
+      }
+    }
+  }
+
+  vaciar() {
+    while (this.edito.length > 0) {
+      this.edito.pop();
+    }
   }
 }

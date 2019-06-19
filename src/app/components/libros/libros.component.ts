@@ -19,6 +19,9 @@ export class LibrosComponent implements OnInit {
   idLibro: string;
   editorialLibro: EditorialLibro;
   autorLibro: AutorLibro;
+  filterName = '';
+  lib: any[] = [];
+  pag: number = 1;
 
   constructor(private librosService: LibrosService,
               private router: Router) {
@@ -26,6 +29,7 @@ export class LibrosComponent implements OnInit {
     this.librosService.getLibros()
         .subscribe( data => {
           this.libros = data;
+          this.lib = data;
         });
   }
 
@@ -80,5 +84,22 @@ export class LibrosComponent implements OnInit {
 
   modalBoton(libro) {
     this.libroBoton = libro;
+  }
+  filtro() {
+    this.vaciar();
+    if (this.filterName === '' || this.filterName.length < 3) {
+      return;
+    }
+    for (const libro of this.libros) {
+      if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
+        this.lib.push(libro);
+      }
+    }
+  }
+
+  vaciar() {
+    while (this.lib.length > 0) {
+      this.lib.pop();
+    }
   }
 }

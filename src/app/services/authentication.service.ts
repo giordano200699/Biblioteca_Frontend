@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Cuenta } from '../interfaces/cuenta.interface';
+var firebase = require('firebase');
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -46,8 +47,15 @@ export class AuthenticationService {
 
 
     logout() {
-        localStorage.removeItem('currentCuenta');
-        this.currentCuentaSubject.next(null);
+        if(localStorage.getItem('currentCuenta')){
+            firebase.auth().signOut().then(function() {
+                console.log("Se ha cerado la sesión");
+                localStorage.removeItem('currentCuenta');
+                this.currentCuentaSubject.next(null);
+            }).catch(function(error) {
+                console.log("Ha ocurrido un error");
+            });
+        }
     }
 
     obtenerAutentificado(){

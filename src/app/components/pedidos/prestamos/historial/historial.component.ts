@@ -27,6 +27,16 @@ export class HistorialComponent implements OnInit {
     this.prestamosServices.traerPrestamos(this.id)
     .subscribe( data => {
       this.prestamos = data;
+      this.prestamos.sort(function (a, b) {
+        if (a.pedidoId < b.pedidoId) {
+          return 1;
+        }
+        if (a.pedidoId > b.pedidoId) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
       console.log(this.prestamos);
       this.filtro();
     });

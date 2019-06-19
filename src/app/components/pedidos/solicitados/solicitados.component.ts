@@ -28,6 +28,16 @@ export class SolicitadosComponent implements OnInit {
     this.pedidosServices.traerPedidos(this.id)
                 .subscribe( data => {
                   this.pedidosUsuario = data;
+                  this.pedidosUsuario.sort(function (a, b) {
+                    if (a.pedidoId < b.pedidoId) {
+                      return 1;
+                    }
+                    if (a.pedidoId > b.pedidoId) {
+                      return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                  });
                   console.log(this.pedidosUsuario);
                 });
   }

@@ -20,14 +20,12 @@ export class NavbarComponent implements OnInit {
   banderaPrestamoRecibido = true;
 
   constructor(public location: Location, private autentificacion: AuthenticationService, 
-              private router: Router) { }
+              private router: Router) { 
+              }
 
   ngOnInit() {
-    this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
-    this.tipoUsuario = this.autentificado.tipoUsuarioId;
-    this.nombre = this.autentificado.nombres;
     var mithis = this;
-
+ 
     if(this.banderaPedidoRechazo){
       var socket = io();
       socket.on('pedido rechazado', function(msg){
@@ -76,6 +74,8 @@ export class NavbarComponent implements OnInit {
       this.banderaPrestamoRecibido = false;
     }
   }
+
+
   isHome() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
 
@@ -104,6 +104,16 @@ export class NavbarComponent implements OnInit {
     else {
       return false;
     }
+  }
+  estaLogueado(){
+    if(this.autentificacion.obtenerAutentificado()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  dameNombre(){
+    return JSON.parse(this.autentificacion.obtenerAutentificado()).nombres;
   }
 
   cerrarSesion(): void {
