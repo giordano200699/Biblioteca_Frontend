@@ -15,6 +15,7 @@ export class SolicitadosComponent implements OnInit {
   public id;
   pedidos: any[] = [];
   pedidosUsuario: any[] = [];
+  p: number = 1;
 
   constructor(private autentificacion: AuthenticationService,
               private pedidosServices: PedidosService,

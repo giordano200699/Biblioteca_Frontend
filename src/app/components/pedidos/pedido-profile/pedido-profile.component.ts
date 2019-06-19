@@ -22,6 +22,7 @@ export class PedidoProfileComponent implements OnInit {
   autor;
   editorial;
   idLibro;
+  p: number = 1;
   items: any[] = [];
   itemBoton: Item = {
     numeroIngreso: '',

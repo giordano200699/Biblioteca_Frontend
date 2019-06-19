@@ -14,6 +14,7 @@ export class PrestamosComponent implements OnInit {
   public id;
   prestamos: any[] = [];
   prestamosUsuario: any[] = [];
+  p: number = 1;
 
   constructor(private autentificacion: AuthenticationService,
               private prestamosServices: PrestamosService,
