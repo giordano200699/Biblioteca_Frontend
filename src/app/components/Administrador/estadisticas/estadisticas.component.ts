@@ -21,6 +21,8 @@ export class EstadisticasComponent implements OnInit {
   temas = [];
 
   modelo = 1;
+  mes = "1";
+  anio = "2019";
 
   title = 'Nº Préstamos';
    type = 'ColumnChart';
@@ -53,7 +55,7 @@ export class EstadisticasComponent implements OnInit {
   obtenerGrafica(){
       var mithis = this;
       if(this.modelo==1){
-        this.prestamosService.obtenerEstadistica()
+        this.prestamosService.obtenerEstadistica(parseInt(mithis.mes),parseInt(mithis.anio))
         .subscribe(datos => {
             var nuevaData = [];
             for (let dato of datos){
@@ -65,7 +67,7 @@ export class EstadisticasComponent implements OnInit {
             });
            
       }else if(this.modelo==2){
-        this.pedidosService.obtenerEstadistica()
+        this.pedidosService.obtenerEstadistica(parseInt(mithis.mes),parseInt(mithis.anio))
         .subscribe(datos => {
             var nuevaData = [];
             for (let dato of datos){
@@ -77,7 +79,7 @@ export class EstadisticasComponent implements OnInit {
             });
 
       }else if(this.modelo==3){
-        this.librosService.obtenerEstadistica()
+        this.librosService.obtenerEstadistica(parseInt(mithis.mes),parseInt(mithis.anio))
         .subscribe(datos => {
             var nuevaData = [];
             for (let dato of datos){

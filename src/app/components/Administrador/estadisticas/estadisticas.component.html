@@ -33,17 +33,46 @@
                 </nav>
                 <div  style="padding-bottom: 30px; margin-bottom:100px;">
                     <h2>Estadísticas</h2>
-                    <select [(ngModel)]="modelo" class="form-control">
-                        <option value="1">Préstamos</option>
-                        <option value="2">Pedidos</option>
-                        <option value="3">Libros</option>
-                    </select>
-                    <button type="button" class="btn btn-info"  (click)="obtenerGrafica()">
-                        Obtener gráfica
-                    </button>
+                    <div class="row">
+                        <select [(ngModel)]="modelo" class="form-control col-md-3">
+                            <option value="1">Préstamos</option>
+                            <option value="2">Pedidos</option>
+                            <option value="3">Libros</option>
+                        </select>
+                        <select [(ngModel)]="mes" class="form-control col-md-3">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Setiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                                <option value="0">Todo el año</option>
+                        </select>
+                        <select [(ngModel)]="anio" class="form-control col-md-3">
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                        </select>
+                        <div class="form-control col-md-3">
+                            <button type="button" class="btn btn-info"  (click)="obtenerGrafica()">
+                                    Obtener gráfica
+                                </button>
+                        </div>
+                    </div>
+                    
                     <hr>
 
-                    <google-chart #chart
+                    <google-chart *ngIf="data.length!=0" #chart
                         [title]="title"
                         [type]="type"
                         [data]="data"
@@ -52,6 +81,7 @@
                         [width]="width"
                         [height]="height">
                     </google-chart>
+                    <h3 *ngIf="data.length==0">No existen datos en esa fecha</h3>
                 </div>
             </div>
         </div>

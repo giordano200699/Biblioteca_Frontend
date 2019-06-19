@@ -126,12 +126,14 @@ export class LibrosService {
       .pipe(map( res => res.json()));
   }
 
-  obtenerEstadistica(){
+  obtenerEstadistica(mes, anio){
     const headers =  new  Headers({
       'Content-Type': 'application/json'
     });
     return this.http.post( this.estadisticaURL+'?'+this.clave,
         {
+          mes:mes,
+          anio:anio
         },
         {headers}
     )
