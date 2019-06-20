@@ -4,6 +4,7 @@ import {Router, ActivatedRoute } from '@angular/router';
 import { Pedido } from '../../../interfaces/pedido.interface';
 import { PedidosService} from '../../../services/pedidos.service';
 import { PrestamosService} from '../../../services/prestamos.service';
+import { CastigosService} from '../../../services/castigos.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import * as io from 'socket.io-client';
 import Swal from 'sweetalert2'
@@ -22,7 +23,8 @@ export class ListaPrestamosComponent implements OnInit {
 
   constructor(private autentificacion: AuthenticationService,
     private pedidosService: PedidosService,
-    private prestamosService: PrestamosService) {
+    private prestamosService: PrestamosService,
+    private castigosService: CastigosService) {
 
       this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
       this.pedidosService.getPedidos().subscribe( data => {
@@ -110,14 +112,11 @@ export class ListaPrestamosComponent implements OnInit {
   }
 
   recibirCastigo(prestamo){
-    var fechaActualS = new Date();
-    fechaActualS.setTime( fechaActualS.getTime() + -5 * 60 * 60 * 1000 );
-    alert("Aca se tiene que castigar");
-    // this.prestamosService.recibirPrestamo(prestamo.prestamoId,fechaActualS.toJSON(),this.autentificado.dni).subscribe( data => {
-    //   this.prestamosService.getPrestamos().subscribe( data => {
-    //     this.prestamos = data;
-    //   });
-    // });
+    this.castigosService.crearCastigo(prestamo.prestamoId).subscribe( data => {
+      this.prestamosService.getPrestamos().subscribe( data => {
+        this.prestamos = data;
+      });
+    });
   }
 
   //Esta funcion todavia no se presentara
