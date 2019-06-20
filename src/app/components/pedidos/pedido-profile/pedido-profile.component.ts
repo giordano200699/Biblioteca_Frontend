@@ -65,6 +65,8 @@ export class PedidoProfileComponent implements OnInit {
     estado: 0,
     tipo: null
   }
+  respuestaPeticion = 'Su pedido se ha realizado con éxito. Espere su aprobación.';
+  banderaError = false;
 
   constructor(private librosService: LibrosService,
               private pedidosService: PedidosService,
@@ -109,9 +111,16 @@ export class PedidoProfileComponent implements OnInit {
     this.itemBoton = item;
   }
   guardar( itemId, tipo) {
-
+    var mithis = this;
     this.pedidosService.newPedido(this.autentificado.dni, itemId, tipo)
       .subscribe( data => {
+        if(data.tipoError){
+            mithis.banderaError = true;
+            mithis.respuestaPeticion = data.contenidoError;
+        }else{
+            mithis.banderaError = false;
+            mithis.respuestaPeticion = 'Su pedido se ha realizado con éxito. Espere su aprobación.';
+        }
       });
   }
 }

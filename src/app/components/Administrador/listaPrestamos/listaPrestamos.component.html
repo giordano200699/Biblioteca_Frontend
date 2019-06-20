@@ -82,11 +82,17 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let prestamo of prestamos">
-                                        <td style="vertical-align: middle;">{{prestamo.apellidos+' '+prestamo.nombres}}</td>
-                                        <td style="vertical-align: middle;">{{prestamo.codigo}}</td>
-                                        <td style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaInicio)}}</td>
-                                        <td style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaFin)}}</td>
-                                        <td><a class="btn btn-success" (click)="recibir(prestamo)">Recibir</a></td>
+                                            <td *ngIf="prestamo.estado != 0" style="vertical-align: middle;">{{prestamo.apellidos+' '+prestamo.nombres}}</td>
+                                            <td *ngIf="prestamo.estado != 0" style="vertical-align: middle;">{{prestamo.codigo}}</td>
+                                            <td *ngIf="prestamo.estado != 0" style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaInicio)}}</td>
+                                            <td *ngIf="prestamo.estado != 0" style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaFin)}}</td>
+                                            <td *ngIf="prestamo.estado != 0"><a class="btn btn-success" (click)="recibir(prestamo)">Recibir</a></td>
+
+                                        <td *ngIf="prestamo.estado == 0" class="table-danger" style="vertical-align: middle;">{{prestamo.apellidos+' '+prestamo.nombres}}</td>
+                                        <td *ngIf="prestamo.estado == 0" class="table-danger" style="vertical-align: middle;">{{prestamo.codigo}}</td>
+                                        <td *ngIf="prestamo.estado == 0" class="table-danger" style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaInicio)}}</td>
+                                        <td *ngIf="prestamo.estado == 0" class="table-danger" style="vertical-align: middle;">{{imprimirFecha(prestamo.fechaFin)}}</td>
+                                        <td *ngIf="prestamo.estado == 0" class="table-danger"><a class="btn btn-warning" (click)="recibirCastigo(prestamo)">Recibir</a></td>
                                         <!-- <td><a class="btn btn-danger" (click)="actualizar(prestamo)">Actualizar</a></td> -->
                                     </tr>
                                 </tbody>

@@ -4,10 +4,12 @@ import { FormControl, FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, 
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Cuenta } from '../../interfaces/cuenta.interface';
+import Swal from 'sweetalert2'
 //import * as io from 'socket.io-client';
 
 var firebase = require('firebase');
 var firebaseui = require('firebaseui');
+
 
 @Component({
   selector: 'app-login',
@@ -116,7 +118,11 @@ export class LoginComponent implements OnInit {
                          this.isError = false;
                        }
                      } else {
-                       console.log('No existe un usuario con esos datos.' );
+                       Swal.fire({
+                        type: 'error',
+                        title: 'Error al iniciar sesión',
+                        text: data.descripcion,
+                      })
                        this.isError = true;
                      }
                      this.isError = true;

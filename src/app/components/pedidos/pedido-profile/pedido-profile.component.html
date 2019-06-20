@@ -174,10 +174,11 @@
                     <h5 class="modal-title" id="exampleModalLabel">PETICION DE LIBRO</h5>
                 </div>
                 <div class="modal-body">
-                    Su pedido se ha realizado con éxito. Espere su aprobación.
+                    {{respuestaPeticion}}
                 </div>
                 <div class="modal-footer">
-                    <button [routerLink]="['/pedidos']" type="button" data-dismiss="modal" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button  *ngIf="!banderaError" [routerLink]="['/pedidos']" type="button" data-dismiss="modal" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    <button  *ngIf="banderaError" type="button" data-dismiss="modal" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                 </div>
             </div>
         </div>

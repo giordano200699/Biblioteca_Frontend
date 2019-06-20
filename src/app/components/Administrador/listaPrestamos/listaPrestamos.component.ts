@@ -109,6 +109,17 @@ export class ListaPrestamosComponent implements OnInit {
     });
   }
 
+  recibirCastigo(prestamo){
+    var fechaActualS = new Date();
+    fechaActualS.setTime( fechaActualS.getTime() + -5 * 60 * 60 * 1000 );
+    alert("Aca se tiene que castigar");
+    // this.prestamosService.recibirPrestamo(prestamo.prestamoId,fechaActualS.toJSON(),this.autentificado.dni).subscribe( data => {
+    //   this.prestamosService.getPrestamos().subscribe( data => {
+    //     this.prestamos = data;
+    //   });
+    // });
+  }
+
   //Esta funcion todavia no se presentara
   /*actualizar(prestamo){
 
