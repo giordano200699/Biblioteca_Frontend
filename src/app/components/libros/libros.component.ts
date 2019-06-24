@@ -20,16 +20,17 @@ export class LibrosComponent implements OnInit {
   editorialLibro: EditorialLibro;
   autorLibro: AutorLibro;
   filterName = '';
-  lib: any[] = [];
+  lib = [];
   pag: number = 1;
 
   constructor(private librosService: LibrosService,
               private router: Router) {
 
+    var mithis = this;
     this.librosService.getLibros()
         .subscribe( data => {
-          this.libros = data;
-          this.lib = data;
+          mithis.libros = data;
+          mithis.lib = [...data];
         });
   }
 
@@ -86,10 +87,13 @@ export class LibrosComponent implements OnInit {
     this.libroBoton = libro;
   }
   filtro() {
+    
     this.vaciar();
     if (this.filterName === '' || this.filterName.length < 3) {
       return;
     }
+    
+    
     for (const libro of this.libros) {
       if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
         this.lib.push(libro);

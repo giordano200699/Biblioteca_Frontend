@@ -22,7 +22,7 @@ export class EditorialesComponent implements OnInit {
     this.editorialesServic.getEditoriales()
     .subscribe( data => {
       this.editoriales = data;
-      this.edito = data;
+      this.edito = [...data];
     });
   }
 

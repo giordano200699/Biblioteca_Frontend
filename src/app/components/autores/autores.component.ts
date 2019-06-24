@@ -22,7 +22,7 @@ export class AutoresComponent implements OnInit {
     this.autoresService.getAutores()
         .subscribe( data => {
           this.autores = data;
-          this.auto = data;
+          this.auto = [...data];
         });
   }
 
