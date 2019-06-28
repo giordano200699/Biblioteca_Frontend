@@ -9,7 +9,7 @@ import { User } from '../../../interfaces/user.interface';
 })
 export class UserProfileComponent implements OnInit {
 
-  u: any[] = [];
+  u: any;
 
   constructor( private usersService: UsersService,
                private activatedRoute: ActivatedRoute ) {
