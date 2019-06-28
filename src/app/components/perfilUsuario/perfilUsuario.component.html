@@ -10,7 +10,8 @@
               <hr>
               <div class="row" style="margin-bottom: 20px; padding-bottom: 20px;">
                 <div class="col-md-4">
-                    <img src="https://bibliotecabackend.herokuapp.com/archivos/imagen/{{autentificado.imagenId}}/2?clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n" class="" alt="Responsive image" style="border-radius: 200px; width: 200px;height: 200px; margin-bottom: 20px;">
+                    <!-- <img src="https://bibliotecabackend.herokuapp.com/archivos/imagen/{{autentificado.imagenId}}/2?clave=QDm6pbKeVwWikPvpMSUYwp0tNnxcaLoYLnyvLQ4ISV39uQOgsjTEjS0UNlZHwbxl2Ujf30S31CSKndwpkFeubt5gJHTgFlq7LeIaSYc0jNm44loPty2ZK1nI0qisrt2Xwq0nFhdp8H3kdpyL5wVZLH7EpSE6IO0cHAOGOfSpJjF36eiCuXJ3gkOfX8C4n" class="" alt="Responsive image" style="border-radius: 200px; width: 200px;height: 200px; margin-bottom: 20px;"> -->
+                    <img src="https://res.cloudinary.com/tempos/image/upload/v1561573722/fotoUsuario.png" class="" alt="Responsive image" style="border-radius: 200px; width: 200px;height: 200px; margin-bottom: 20px;">
                     <p>{{autentificado.apellidos}}{{autentificado.nombres}}</p>
                     <p>Estado: Normal</p>
                     <p>Nª Préstamos : 14</p>
@@ -28,8 +29,9 @@
                         <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
                           <p>Nombres : {{autentificado.nombres}}</p>
                           <p>Apellidos : {{autentificado.apellidos}}</p>
-                          <p>Edad : {{autentificado.edad}} años</p>
-                          <p>Sexo : {{autentificado.sexo?"Femenino":"Masculino"}}</p>
+                          <p *ngIf="autentificado.codigo!=null">Código : {{autentificado.codigo}}</p>
+                          <p *ngIf="autentificado.edad!=null">Edad : {{autentificado.edad}} años</p>
+                          <p *ngIf="autentificado.sexo!=null">Sexo : {{autentificado.sexo?"Femenino":"Masculino"}}</p>
                           <p>Direccion : {{autentificado.direccion}}</p>
                           <p>DNI : {{autentificado.dni}}</p>
                           <p>Teléfono : {{autentificado.telefonoCasa}}</p>
@@ -39,10 +41,18 @@
                         </div>
                         <div class="tab-pane fade" id="nav-academico" role="tabpanel" aria-labelledby="nav-academico-tab">
                             <p>Tipo de Usuario : {{tipoUsuario?tipoUsuario.nombre:null}}</p>
-                            <p>Estado : Normal</p>
-                            <p>Temas más buscados : Inteligencia Artifical, Economía, Cálculo I, Fisica III, Cálculo II</p>
+                            <p *ngIf="autentificado.estado==0">Estado : Normal</p>
+                            <p *ngIf="autentificado.estado==1">Estado : Ha pedido un material</p>
+                            <p *ngIf="autentificado.estado==2">Estado : Tiene prestado un material</p>
+                            <p *ngIf="autentificado.estado==3">Estado : Bloqueado</p>
+                            <p *ngIf="autentificado.estado==4">Estado : Castigado</p>
+                            <!-- <p>Temas más buscados : Inteligencia Artifical, Economía, Cálculo I, Fisica III, Cálculo II</p>
                             <p>Libros más pedidos : Cálculo Integral, Física III, Economía para la Gestión, Inteligencia Artificial, Redes Neuronales</p>
-                            <p>Calificación : 111 puntos</p>
+                            <p>Calificación : 111 puntos</p> -->
+
+                            <p>Temas más buscados : -</p>
+                            <p>Libros más pedidos : -</p>
+                            <p>Calificación : 0 puntos</p>
 
                         </div>
                       </div>

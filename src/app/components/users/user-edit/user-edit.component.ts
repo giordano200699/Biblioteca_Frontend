@@ -40,7 +40,7 @@ export class UserEditComponent implements OnInit {
     this.usersService.getUser( dni )
     .subscribe( user => {
       console.log(user);
-      this.user = user[0];
+      this.user = user;
     });
 
   }

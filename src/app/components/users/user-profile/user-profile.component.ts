@@ -9,7 +9,7 @@ import { User } from '../../../interfaces/user.interface';
 })
 export class UserProfileComponent implements OnInit {
 
-  user: any[] = [];
+  u: any[] = [];
 
   constructor( private usersService: UsersService,
                private activatedRoute: ActivatedRoute ) {
@@ -26,17 +26,17 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUser( dni: string ) {
-
+    var mithis = this;
     this.usersService.getUser( dni )
     .subscribe( user => {
       console.log(user);
-      this.user = user;
+      mithis.u = user;
     });
 
   }
 
   mostrar() {
-   console.log(this.user);
+   console.log(this.u);
   }
 
 }
