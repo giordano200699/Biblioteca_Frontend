@@ -31,7 +31,7 @@ import { HistorialComponent } from './components/pedidos/prestamos/historial/his
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
-  //{ path: 'loginFirebase', component: LoginFirebaseComponent },
+  { path: 'loginFirebase', component: LoginFirebaseComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   { path: 'user/:id', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'profile/:dni', component: UserProfileComponent, canActivate: [AuthGuard] },
