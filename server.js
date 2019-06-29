@@ -21,6 +21,7 @@ app.post ('/evento', function(req, res){
     res.sendFile (path.join(__dirname + '/dist/prueba.html'));
 });
 
+
 app.get ('/*', function(req, res){
     
 res.sendFile (path.join(__dirname + '/dist/fisilib/index.html'));
