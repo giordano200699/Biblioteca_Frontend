@@ -86,13 +86,13 @@ export class NavbarComponent implements OnInit {
     }
   }
   isAdmin() {
-    if (this.tipoUsuario >= 11) {
+    if (JSON.parse(this.autentificacion.obtenerAutentificado()).tipoUsuarioId >= 11) {
       return true;
     }
     return false;
   }
   isAlumno() {
-    if (this.tipoUsuario < 11) {
+    if (JSON.parse(this.autentificacion.obtenerAutentificado()).tipoUsuarioId < 11) {
       return true;
     }
     return false;

@@ -65,6 +65,19 @@ export class LibrosService {
         .pipe(map( res => res.json()));
   }
 
+  getLibrosPag(pag,busqueda){
+    const headers =  new  Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post( this.libroURL+'/paginadoF/'+pag+'?'+this.clave, {
+      "busqueda":busqueda
+    }, { headers } )
+        .pipe(map( res => {
+          console.log(res.json());
+          return res.json();
+        }));
+  }
+
   getTodoLibros(id: string) {
     const url = `${ this.todoLibroURL }/${ id }?${ this.clave }`;
     console.log(url);

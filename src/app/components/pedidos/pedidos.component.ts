@@ -13,6 +13,9 @@ export class PedidosComponent implements OnInit {
   public autentificado;
   public nombre;
   libros: any[] = [];
+  cantLibros;
+  pagina:1;
+  rango = [];
   lib: any[] = [];
   aux: any[] = [];
   pag: number = 1;
@@ -23,10 +26,11 @@ export class PedidosComponent implements OnInit {
               private librosService: LibrosService,
               private router: Router) {
 
-            this.librosService.getLibros()
-              .subscribe( data => {
-                this.libros = data;
-            });
+          //       var mithis = this;
+          //   this.librosService.getLibrosPag(1,"").subscribe( data => {
+          //     console.log(data);
+          //     mithis.libros = data.resultado;
+          // });
   }
 
   ngOnInit() {
@@ -38,15 +42,37 @@ export class PedidosComponent implements OnInit {
     this.router.navigate(['/pedido', this.idLibro]);
   }
 
-  filtro() {
-    this.vaciar();
-    if (this.filterName === '' || this.filterName.length < 3) {
-      return;
-    }
-    for (const libro of this.libros) {
-      if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
-        this.lib.push(libro);
-      }
+  filtro(pag) {
+    var mithis = this;
+      this.librosService.getLibrosPag(pag,this.filterName).subscribe( data => {
+          console.log(data);
+          mithis.libros = data.resultado;
+          mithis.pagina = pag;
+          if(data.cantLibros%10==0){
+            mithis.cantLibros = data.cantLibros/10;
+          }else{
+            mithis.cantLibros = (data.cantLibros-data.cantLibros%10)/10 +1;
+          }
+      });
+  }
+
+  tecla(evento){
+    if(evento.key=="Enter"){
+      var mithis = this;
+      this.librosService.getLibrosPag(1,this.filterName).subscribe( data => {
+          console.log(data);
+          mithis.libros = data.resultado;
+          mithis.pagina = 1;
+          if(data.cantLibros%10==0){
+            mithis.cantLibros = data.cantLibros/10;
+          }else{
+            mithis.cantLibros = (data.cantLibros-data.cantLibros%10)/10 +1;
+          }
+          mithis.rango = [];
+          for(var i = 1;i<=mithis.cantLibros;i++){
+            mithis.rango.push(i);
+          }
+      });
     }
   }
 
