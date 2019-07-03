@@ -24,7 +24,7 @@ export class PrestamosComponent implements OnInit {
   ngOnInit() {
     this.autentificado = JSON.parse(this.autentificacion.obtenerAutentificado());
     this.nombre = this.autentificado.nombres;
-    this.id = this.autentificado.dni;
+    this.id = this.autentificado.usuarioId;
     this.prestamosServices.traerPrestamos(this.id)
                 .subscribe( data => {
                   this.prestamos = data;
