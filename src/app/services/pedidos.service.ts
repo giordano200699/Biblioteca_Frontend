@@ -19,6 +19,7 @@ export class PedidosService {
   pedidoURLCancelar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/cancelar';
   pedidoURLAceptar:string = 'http://bibliotecabackend.herokuapp.com/pedidos/aceptar';
   pedidoUsuario:string = 'http://bibliotecabackend.herokuapp.com/pedidos/usuario/';
+  pedidoAutor:string = 'http://bibliotecabackend.herokuapp.com/libros/autores/';
   estadisticaURL: string = 'http://bibliotecabackend.herokuapp.com/pedidos/estadistica';
   id: string;
 
@@ -100,6 +101,10 @@ export class PedidosService {
         console.log(res.json());
         return res.json();
     }));
+  }
+  getIdAutor(id){
+    return this.http.get(this.pedidoAutor+id+this.clave)
+    .pipe(map( res => res.json()));
   }
 
   obtenerEstadistica(mes,anio){

@@ -27,11 +27,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link" [routerLink]="['/administrador/prestamos']">Préstamos</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/administrador/estadisticas']">Estadísticas</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <div  style="padding-bottom: 30px; margin-bottom:100px;">
+                <div style="padding-bottom: 30px; margin-bottom:100px;">
                     <h2>Estadísticas</h2>
                     <div class="row">
                         <select [(ngModel)]="modelo" class="form-control col-md-3">
@@ -64,22 +67,15 @@
                                 <option value="2025">2025</option>
                         </select>
                         <div class="form-control col-md-3">
-                            <button type="button" class="btn btn-info"  (click)="obtenerGrafica()">
+                            <button type="button" class="btn btn-info" (click)="obtenerGrafica()">
                                     Obtener gráfica
                                 </button>
                         </div>
                     </div>
-                    
+
                     <hr>
 
-                    <google-chart *ngIf="data.length!=0" #chart
-                        [title]="title"
-                        [type]="type"
-                        [data]="data"
-                        [columnNames]="columnNames"
-                        [options]="options"
-                        [width]="width"
-                        [height]="height">
+                    <google-chart *ngIf="data.length!=0" #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options" [width]="width" [height]="height">
                     </google-chart>
                     <h3 *ngIf="data.length==0">No existen datos en esa fecha</h3>
                 </div>

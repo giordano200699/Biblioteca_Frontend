@@ -87,13 +87,10 @@ export class LibrosComponent implements OnInit {
     this.libroBoton = libro;
   }
   filtro() {
-    
     this.vaciar();
     if (this.filterName === '' || this.filterName.length < 3) {
       return;
     }
-    
-    
     for (const libro of this.libros) {
       if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
         this.lib.push(libro);
