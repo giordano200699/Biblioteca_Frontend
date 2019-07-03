@@ -12,7 +12,11 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 })
 export class LibrosComponent implements OnInit {
 
+  
   libros: any[] = [];
+  cantLibros;
+  pagina:1;
+  rango = [];
   edilibros: any[] = [];
   autlibros: any[] = [];
   libroBoton;
@@ -26,12 +30,6 @@ export class LibrosComponent implements OnInit {
   constructor(private librosService: LibrosService,
               private router: Router) {
 
-    var mithis = this;
-    this.librosService.getLibros()
-        .subscribe( data => {
-          mithis.libros = data;
-          mithis.lib = [...data];
-        });
   }
 
   ngOnInit() {
@@ -43,9 +41,19 @@ export class LibrosComponent implements OnInit {
     console.log(this.idLibro);
     // this.eliminarRelacion(this.idLibro);
     this.libroBoton = null;
+    
+    var mithis = this;
     this.librosService.borrarLibro(this.idLibro)
       .subscribe( respuesta => {
-          console.log(respuesta);
+          this.librosService.getLibrosPag(mithis.pagina,this.filterName).subscribe( data => {
+              console.log(data);
+              mithis.libros = data.resultado;
+              if(data.cantLibros%10==0){
+                mithis.cantLibros = data.cantLibros/10;
+              }else{
+                mithis.cantLibros = (data.cantLibros-data.cantLibros%10)/10 +1;
+              }
+          });
       });
   }
 
@@ -86,15 +94,37 @@ export class LibrosComponent implements OnInit {
   modalBoton(libro) {
     this.libroBoton = libro;
   }
-  filtro() {
-    this.vaciar();
-    if (this.filterName === '' || this.filterName.length < 3) {
-      return;
-    }
-    for (const libro of this.libros) {
-      if (libro.titulo.toLowerCase().indexOf(this.filterName.toLowerCase()) > -1) {
-        this.lib.push(libro);
-      }
+  filtro(pag) {
+    var mithis = this;
+      this.librosService.getLibrosPag(pag,this.filterName).subscribe( data => {
+          console.log(data);
+          mithis.libros = data.resultado;
+          mithis.pagina = pag;
+          if(data.cantLibros%10==0){
+            mithis.cantLibros = data.cantLibros/10;
+          }else{
+            mithis.cantLibros = (data.cantLibros-data.cantLibros%10)/10 +1;
+          }
+      });
+  }
+
+  tecla(evento){
+    if(evento.key=="Enter"){
+      var mithis = this;
+      this.librosService.getLibrosPag(1,this.filterName).subscribe( data => {
+          console.log(data);
+          mithis.libros = data.resultado;
+          mithis.pagina = 1;
+          if(data.cantLibros%10==0){
+            mithis.cantLibros = data.cantLibros/10;
+          }else{
+            mithis.cantLibros = (data.cantLibros-data.cantLibros%10)/10 +1;
+          }
+          mithis.rango = [];
+          for(var i = 1;i<=mithis.cantLibros;i++){
+            mithis.rango.push(i);
+          }
+      });
     }
   }
 

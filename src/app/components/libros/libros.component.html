@@ -32,68 +32,68 @@
                                     <a class="nav-link" [routerLink]="['/administrador/estadisticas']">Estadísticas</a>
                                 </li>
                             </ul>
-                            <form class="form-inline ml-auto">
-                                <div class="form-group no-border">
-                                    <input type="text" name="filterName" class="form-control" placeholder="Búsqueda" [(ngModel)]="filterName">
-                                </div>
-                                <button (click)="filtro()" type="submit" class="btn btn-white btn-just-icon btn-round">
-                                    <i class="material-icons">search</i>
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </nav>
                 <div>
-                    <h3>Bienvenido,Administrador</h3>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" name="button" [routerLink]="['/libro','nuevo']" class="btn btn-success">
+                                Nuevo Libro
+                            </button>
+                        </div>
+                    </div>
                     <hr>
                     <div class="panel panel-success">
-                        <div class="panel-heading text-uppercase">Libros:</div>
-                        <br>
                         <div class="panel-body">
-                            <p>Solo usted como administrador tiene acceso a esta sección.</p>
-                            <p>Desde aquí es posible gestionar la información de los libros.</p>
-                            <div class="row">
-                                <div class="col-md-10 text-right">
-                                    <button type="button" name="button" [routerLink]="['/libro','nuevo']" class="btn btn-success">
-                                        Nuevo Libro
-                                    </button>
-                                </div>
+                            <div class="col col-md-12" style="text-align: center; margin-top: 40px;">
+                                    <h1 style="font-family: 'Nagita', serif; font-size:80px;">Búsqueda de Libros</h1>
+                            </div>
+                            <div class="col col-md-12" style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+                                <input type="search" name="filterName" placeholder="Busca tu Libro" class="Buscador"  [(ngModel)]="filterName"  (keyup)="tecla($event)" />
+                                <button type="submit" class="btn btn-primary mb-2" (click)="filtro(1)"><i class="material-icons">search</i></button>
                             </div>
                             <br>
                             <table class="table table-bordered table-hover">
                                 <thead>
-                                    <tr class="success">
-                                        <th>ID</th>
-                                        <th>TITULO</th>
-                                        <th>DESCRIPCIÓN</th>
-                                        <th>AÑO</th>
-                                        <th>EDICIÓN</th>
-                                        <th>&nbsp;</th>
+                                    <tr class="success">                                        
+                                        <th>CLASIFICACIÓN</th>
+                                        <th>TÍTULO</th>
+                                        <th>AUTORES</th>
+                                        <th>EDITORIALES</th>
+                                        <th>ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let libro of lib | paginate: {itemsPerPage: 5, currentPage: pag}">
-                                        <td>{{libro.libroId}}</td>
-                                        <td>{{libro.titulo}}</td>
-                                        <td>{{libro.tituloSecundario}}</td>
-                                        <td>{{libro.anio}}</td>
-                                        <td class="text-right">{{libro.edicion}}</td>
+                                    <tr *ngFor="let li of libros">
+                                        <td>{{li.libro.clasificacion}}</td>
+                                        <td>{{li.libro.titulo}}</td>
+                                        <td >
+                                            <div *ngFor="let autor of li.autores">
+                                                {{autor.autores[0].nombre}} 
+                                            </div>
+                                        </td>
+                                        <td >
+                                            <div *ngFor="let editorial of li.editoriales">
+                                                {{editorial.editoriales[0].nombre}} 
+                                            </div>
+                                        </td>
                                         <td class="td-actions text-right">
                                             <div class='row'>
                                                 <div class="col-md-12" style="text-align: center;">
-                                                    <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(libro.libroId)" class="btn btn-info btn-simple btn-xs">
+                                                    <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(li.libro.libroId)" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-book"></i>
                                                     </button>
-                                                    <button type="button" rel="tooltip" title="Editar Libro" (click)="editarLibro(libro.libroId)" class="btn btn-success btn-simple btn-xs">
+                                                    <button type="button" rel="tooltip" title="Editar Libro" (click)="editarLibro(li.libro.libroId)" class="btn btn-success btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                 </div>
                                                 <div class="col-md-12" style="text-align: center;">
-                                                    <button type="button" class="btn btn-warning btn-simple btn-xs" (click)="mostrarTemas(libro.libroId)" type="button" rel="tooltip" title="Temas">
+                                                    <button type="button" class="btn btn-warning btn-simple btn-xs" (click)="mostrarTemas(li.libro.libroId)" type="button" rel="tooltip" title="Temas">
                                                         <i class="fa fa-bookmark"></i>
                                                     </button>
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-danger btn-simple btn-xs" type="button" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal" (click)="modalBoton(libro)">
+                                                    <button type="button" class="btn btn-danger btn-simple btn-xs" type="button" rel="tooltip" title="Eliminar" data-toggle="modal" data-target="#exampleModal" (click)="modalBoton(li.libro)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>
@@ -103,7 +103,49 @@
                                 </tbody>
                             </table>
                             <br>
-                            <pagination-controls class="text-center" (pageChange)="pag = $event"></pagination-controls>
+                            <nav aria-label="Page navigation example" *ngIf="libros.length!=0">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item" *ngIf="pagina!=1">
+                                <a class="page-link" (click)="filtro(pagina-1)">Anterior</a>
+                                </li>
+                                <span *ngFor="let i of rango" >
+                                    <span *ngIf="pagina==i && i>3 && i<rango.length-2">
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i==4 && i==rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i==4 && i!=rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i!=4 && i==rango.length-3">
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i!=4 && i!=rango.length-3">
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                        </span>
+                                    </span>
+                                    <span *ngIf="i<=3 || i>=rango.length-2">
+                                        <span class="pagination justify-content-center" *ngIf="i==3 && i!=rango.length-3">
+                                                <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                                <li *ngIf="pagina!=i" class="page-item"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                                <li class="page-item" *ngIf="pagina<=3 || pagina>=rango.length-2"><a class="page-link">..</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="i!=3 || i==rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li *ngIf="pagina!=i" class="page-item"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        
+                                    </span>
+                                    
+                                </span>
+                                <li class="page-item" *ngIf="pagina!=rango.length">
+                                <a class="page-link" (click)="filtro(pagina+1)">Siguiente</a>
+                                </li>
+                            </ul>
+                            </nav>
                             <br>
                         </div>
                     </div>

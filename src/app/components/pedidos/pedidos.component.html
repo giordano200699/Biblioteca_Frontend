@@ -78,9 +78,41 @@
                             <nav aria-label="Page navigation example" *ngIf="libros.length!=0">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item" *ngIf="pagina!=1">
-                                <a class="page-link" (click)="filtro(pagina-1)" tabindex="-1" aria-disabled="true">Anterior</a>
+                                <a class="page-link" (click)="filtro(pagina-1)">Anterior</a>
                                 </li>
-                                <li class="page-item" *ngFor="let i of rango"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                <span *ngFor="let i of rango" >
+                                    <span *ngIf="pagina==i && i>3 && i<rango.length-2">
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i==4 && i==rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i==4 && i!=rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i!=4 && i==rango.length-3">
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="pagina==i && i!=4 && i!=rango.length-3">
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li  class="page-item"><a class="page-link" >...</a></li>
+                                        </span>
+                                    </span>
+                                    <span *ngIf="i<=3 || i>=rango.length-2">
+                                        <span class="pagination justify-content-center" *ngIf="i==3 && i!=rango.length-3">
+                                                <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                                <li *ngIf="pagina!=i" class="page-item"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                                <li class="page-item" *ngIf="pagina<=3 || pagina>=rango.length-2"><a class="page-link">..</a></li>
+                                        </span>
+                                        <span class="pagination justify-content-center" *ngIf="i!=3 || i==rango.length-3">
+                                            <li *ngIf="pagina==i" class="page-item active"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                            <li *ngIf="pagina!=i" class="page-item"><a class="page-link" (click)="filtro(i)">{{i}}</a></li>
+                                        </span>
+                                        
+                                    </span>
+                                    
+                                </span>
                                 <li class="page-item" *ngIf="pagina!=rango.length">
                                 <a class="page-link" (click)="filtro(pagina+1)">Siguiente</a>
                                 </li>

@@ -112,7 +112,7 @@ export class PedidoProfileComponent implements OnInit {
   }
   guardar( itemId, tipo) {
     var mithis = this;
-    this.pedidosService.newPedido(this.autentificado.dni, itemId, tipo)
+    this.pedidosService.newPedido(this.autentificado.usuarioId, itemId, tipo)
       .subscribe( data => {
         if(data.tipoError){
             mithis.banderaError = true;
