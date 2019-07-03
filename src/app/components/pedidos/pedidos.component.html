@@ -52,7 +52,7 @@
                                     <tr class="success">
                                         <th>ID</th>
                                         <th>TITULO</th>
-                                        <th>DESCRIPCIÓN</th>
+                                        <th>AUTOR</th>
                                         <th>AÑO</th>
                                         <th>EDICIÓN</th>
                                     </tr>
@@ -61,8 +61,8 @@
                                     <tr *ngFor="let li of lib | paginate: {itemsPerPage: 5, currentPage: pag}">
                                         <td>{{li.libroId}}</td>
                                         <td>{{li.titulo}}</td>
-                                        <td>NOMBRE AUTOR</td>
-                                        <td>{{li.tituloSecundario}}</td>
+                                        <td>NOMBRE DEL AUTOR</td>
+                                        <td>{{li.anio}}</td>
                                         <td class="text-right">{{li.edicion}}</td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" title="Ver Libro" (click)="mostrarLibro(li.libroId)" class="btn btn-info btn-simple btn-xs">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { LibrosService } from '../../services/libros.service';
+import { PedidosService } from '../../services/pedidos.service';
+import { AutoresService } from '../../services/autores.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -15,12 +17,17 @@ export class PedidosComponent implements OnInit {
   libros: any[] = [];
   lib: any[] = [];
   aux: any[] = [];
+  autor: any[] = [];
+  idautor: number;
+  idAutor: string;
   pag: number = 1;
   idLibro: string;
   filterName = '';
 
   constructor(private autentificacion: AuthenticationService,
               private librosService: LibrosService,
+              private pedidosService: PedidosService,
+              private autoresService: AutoresService,
               private router: Router) {
 
             this.librosService.getLibros()
