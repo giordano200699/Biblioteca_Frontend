@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded');
+
+.nav-titulo{
+    font-family: "Encode Sans Semi Expanded", sans-serif;
+    font-size: 20px;
+    letter-spacing: 2.4px;
+    word-spacing: 2.4px;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.nav-menu{
+    font-family: "Encode Sans Semi Expanded", sans-serif;
+    font-size: 15px;
+    letter-spacing: 2.4px;
+    word-spacing: 2.4px;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
