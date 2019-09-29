@@ -1,11 +1,12 @@
-<div class="page-header header-filter" style="background-image: url('../assets/libs/bootstrap/img/img03.jpg'); background-size: cover; background-position: top center;">
-    <div class="container">
+
+<div class="page-header header-filter wrapper" style="background-image: url('../assets/libs/bootstrap/img/img03.jpg'); background-size: cover; background-position: top center;">
+    <div class="container esp">
         <div class="row">
             <div class="col-lg-4 col-md-4 ml-auto mr-auto">
                 <div class="card card-login">
                     <form #formLogin="ngForm" (ngSubmit)="iniciarSesion()">
                         <div class="card-header card-header-primary text-center">
-                            <h3 class="card-title">Iniciar Sesión</h3>
+                            <h3 class="card-title login-titulo">Iniciar Sesión</h3>
                         </div>
                         <br>
                         <div class="card-body">
@@ -15,21 +16,21 @@
                                     <i class="material-icons">mail</i>
                                 </span>
                                 </div>
-                                <input [(ngModel)]="login.nombre" id="email" name="email" type="email" class="form-control" placeholder="Correo Institucional..." required>
+                                <input [(ngModel)]="login.nombre" id="email" name="email" type="email" class="form-control login-opciones" placeholder="Correo Institucional..." required>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                      <i class="material-icons">lock_outline</i>
+                                    <i class="material-icons">lock_outline</i>
                                     </span>
                                 </div>
-                                <input [(ngModel)]="login.contrasenia" id="password" name="password" type="password" class="form-control" placeholder="Contraseña..." required>
+                                <input [(ngModel)]="login.contrasenia" id="password" name="password" type="password" class="form-control login-opciones" placeholder="Contraseña..." required>
                             </div>
                             
                         </div>
                         <br>
                         <div class="footer text-center">
-                            <button type="submit" class="btn btn-info">INICIAR SESIÓN</button>
+                            <button type="submit" class="btn login-boton login-titulo">INICIAR SESIÓN</button>
                         </div>
                         <div id="firebaseui-auth-container"></div>
                     </form>

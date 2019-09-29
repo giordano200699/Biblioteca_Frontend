@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+
+
+.login-titulo{
+    font-family: "Encode Sans Semi Expanded", sans-serif;
+    letter-spacing: 2.4px;
+    word-spacing: 2.4px;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    /*text-transform: uppercase;*/
+}
+
+.login-opciones{
+    font-family: "Encode Sans Semi Expanded", sans-serif;
+    letter-spacing: 2.4px;
+    word-spacing: 2.4px;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+}
+
+.login-boton {
+    color: #ffffff;
+    /* background-color: #AB47BC; */
+    background: linear-gradient(60deg, #ab47bc, #7b1fa2);
+    border-color: #2196f3;
+    box-shadow: none;
+  }
+
+@media (min-width : 0px) and (max-width : 1024px) and (orientation : landscape){
+    .esp{
+         margin-top: 15%;
+    }
+}
+
+.wrapper {
+    display: grid;
+}
+

@@ -1,19 +1,25 @@
 <body class="profile-page sidebar-collapse">
 
     <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/libs/bootstrap/img/book.jpg');"></div>
+
     <div class="main main-raised">
         <div class="profile-content">
             <div class="container">
+
                 <nav class="navbar navbar-expand-lg bg-success">
                     <div class="container">
-                        <p class="navbar-brand">Prestamos</p>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
+                            
+                        <div class="navbar-translate">  
+                            <a class="navbar-brand">Prestamos</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="collapsingNavbar">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
                                     <a class="nav-link" [routerLink]="['/pedidos']">Solicitar</a>
@@ -31,6 +37,7 @@
                         </div>
                     </div>
                 </nav>
+                
                 <div>
                     <div class="panel panel-success">
                         <div class="panel-body">

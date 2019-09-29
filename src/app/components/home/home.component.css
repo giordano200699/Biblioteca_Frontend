@@ -38,3 +38,15 @@
     font-variant: normal;
 }
 
+@media (min-width : 0px) and (max-width : 1024px) and (orientation : landscape){
+    .espNav{
+         margin-top: 8%;
+    }
+
+    .espMain{
+        margin-top: 5%;
+    }
+}
+
+  
+
