@@ -29,7 +29,7 @@
     "@types/node": "~8.9.4",
     "angular-google-charts": "^0.1.6",
     "core-js": "^2.5.4",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "firebase": "^6.1.1",
     "firebaseui": "^4.0.0",
     "ngx-pagination": "^4.0.0",
